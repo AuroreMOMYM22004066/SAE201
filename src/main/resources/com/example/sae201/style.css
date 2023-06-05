@@ -1,0 +1,18 @@
+
+.titre {
+    -fx-text-fill: #FF8811;
+    -fx-background-color: #4A313E;
+}
+
+
+.menu1Button {
+    -fx-background-color: #ABD2FA;
+}
+
+.menu2Button {
+    -fx-background-color: #89AAE6;
+}
+
+.menu3Button {
+    -fx-background-color: #F4D06F;
+}
