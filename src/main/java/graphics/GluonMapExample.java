@@ -3,19 +3,14 @@ package graphics;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class GluonMapExample extends Application {
+public class GluonMapExample {
 
- public static void main(String[] args) {
-  launch();
- }
-
- @Override
- public void start(Stage stage) {
+ public static void displayMap() {
+  Stage stage = new Stage();
 
   /* Définit la plate-forme pour éviter "javafx.platform is not defined" */
   System.setProperty("javafx.platform", "desktop");
@@ -55,8 +50,8 @@ public class GluonMapExample extends Application {
   Scene scene = new Scene(root, 640, 480);
 
   stage.setScene(scene);
+  stage.setTitle("Carte Séisme");
   stage.show();
-
  }
 
 }

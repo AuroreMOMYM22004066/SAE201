@@ -161,4 +161,7 @@
             </HBox>
         </GridPane>
     </center>
+    <bottom>
+        <Button fx:id="DisplayMap" text="Afficher la map" alignment="BOTTOM_RIGHT" onAction="#openMapButtonClicked" />
+    </bottom>
 </BorderPane>
