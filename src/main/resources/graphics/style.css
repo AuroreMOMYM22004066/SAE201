@@ -9,7 +9,8 @@
 .textPage1 {
     -fx-text-fill: #FF8811;
     -fx-font-size: 14;
-    -fx-spacing: 10;
+    -fx-padding: 10;
+
 }
 
 
@@ -39,7 +40,3 @@
     -fx-alignment: center;
 }
 
-.comboBox {
-    -fx-background-color: #393E41;
-    -fx-prompt-text-fill: #FF8811;
-}

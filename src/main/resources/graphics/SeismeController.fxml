@@ -35,7 +35,7 @@
     <center>
         <GridPane styleClass="gridPane">
             <Label styleClass="textPage1" text="Type de séisme" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Séismes" styleClass="comboBox">
+            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Séismes">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Séismes"/>
@@ -45,11 +45,7 @@
                 </items>
             </ComboBox>
             <Label styleClass="textPage1" text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-            <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="vide" ></Spinner>
-            <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-            <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="vide" ></Spinner>
-            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="6" promptText="France">
+            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="France">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="France"/>
@@ -57,9 +53,14 @@
                     </FXCollections>
                 </items>
             </ComboBox>
+            <ComboBox fx:id="listeDepartement" visible="false"/>
+            <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="vide" ></Spinner>
+            <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="6" promptText="vide" ></Spinner>
             <Label styleClass="textPage1" text="Niveau d'intensité macrosismique" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-            <Slider min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-            <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9">
+            <Slider min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
+            <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.columnSpan="3">
                 <Button fx:id="rechercheButton" text="Recherche"/>
             </HBox>
         </GridPane>
