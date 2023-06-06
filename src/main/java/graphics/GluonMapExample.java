@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 public class GluonMapExample {
 
- public static void displayMap() {
+ public static VBox displayMap() {
+
   Stage stage = new Stage();
 
   /* Définit la plate-forme pour éviter "javafx.platform is not defined" */
@@ -41,17 +42,12 @@ public class GluonMapExample {
   /* Centre la carte sur le point */
   mapView.flyTo(0, mapPoint, 0.1);
 
+  mapView.setMinSize(500, 500);
+  mapView.setMaxSize(500, 500);
+
   root.getChildren().add(mapView);
 
-  /*
-   * IMPORTANT mettre la taille de la fenêtre pour éviter l'erreur
-   * java.lang.OutOfMemoryError
-   */
-  Scene scene = new Scene(root, 640, 480);
-
-  stage.setScene(scene);
-  stage.setTitle("Carte Séisme");
-  stage.show();
+  return root;
  }
 
 }

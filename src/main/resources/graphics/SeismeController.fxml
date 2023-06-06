@@ -16,6 +16,7 @@
 
 <?import javafx.scene.control.ScrollPane?>
 <?import graphics.GluonMapExample?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics.SeismeController"
@@ -161,7 +162,7 @@
             </HBox>
         </GridPane>
     </center>
-    <bottom>
-        <Button fx:id="DisplayMap" text="Afficher la map" alignment="BOTTOM_RIGHT" onAction="#openMapButtonClicked" />
-    </bottom>
+    <right>
+        <VBox fx:id="mapContainer" />
+    </right>
 </BorderPane>
