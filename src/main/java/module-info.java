@@ -3,6 +3,6 @@ module com.example.sae201 {
     requires javafx.fxml;
 
 
-    opens com.example.sae201 to javafx.fxml;
-    exports com.example.sae201;
+    opens graphics to javafx.fxml;
+    exports graphics;
 }

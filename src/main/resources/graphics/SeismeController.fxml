@@ -16,7 +16,7 @@
 <?import java.lang.String?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.sae201.SeismeController"
+            fx:controller="graphics.SeismeController"
             stylesheets="@style.css"
             minWidth="950" minHeight="500"
             style="-fx-background-color: black">
