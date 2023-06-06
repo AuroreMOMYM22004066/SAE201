@@ -1,39 +1,27 @@
 
 .titre {
-    -fx-text-fill: #FF8811;
-    -fx-background-color: #0D1321;
-    -fx-max-width: 950;
+    /*-fx-text-fill: #FF8811;
+    -fx-background-color: #0D1321;*/
+    -fx-max-width: 1000;
     -fx-font-size: 20;
+
 }
 
 .textPage1 {
-    -fx-text-fill: #FF8811;
+    /*-fx-text-fill: #FF8811;*/
     -fx-font-size: 14;
     -fx-padding: 10;
 
 }
 
-
-.menu1Button {
-    -fx-background-color: #546A76;
-    -fx-min-height: 50;
-    -fx-min-width: 20;
-}
-
-.menu2Button {
-    -fx-background-color: #393E41;
-    -fx-min-height: 50;
-    -fx-min-width: 20;
-}
-
-.menu3Button {
-    -fx-background-color: #ABD2FA;
-    -fx-min-height: 50;
-    -fx-min-width: 20;
+.hbox {
+    -fx-padding: 10;
+    -fx-spacing: 10;
 }
 
 .gridPane {
-    -fx-background-color: #393E41;
+    /*-fx-background-color: #393E41;*/
+    -fx-padding: 10;
 }
 
 .rechercheButton {

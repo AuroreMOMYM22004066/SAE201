@@ -109,7 +109,42 @@
       <option name="project" value="LOCAL" />
       <updated>1686042290028</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="test">
+      <created>1686042433132</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686042433132</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test">
+      <created>1686042464949</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686042464949</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1686043853386</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686043853386</updated>
+    </task>
+    <task id="LOCAL-00008" summary="push please">
+      <created>1686043922245</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686043922245</updated>
+    </task>
+    <task id="LOCAL-00009" summary="push please">
+      <created>1686043944608</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686043944608</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,8 +166,11 @@
     <MESSAGE value="correction du CSS" />
     <MESSAGE value="add : README - fix : Orders" />
     <MESSAGE value="correction css" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="changement css" />
-    <option name="LAST_COMMIT_MESSAGE" value="changement css" />
+    <MESSAGE value="test" />
+    <MESSAGE value="correction interface" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="push please" />
+    <option name="LAST_COMMIT_MESSAGE" value="push please" />
   </component>
 </project>
