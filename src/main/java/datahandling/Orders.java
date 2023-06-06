@@ -5,7 +5,7 @@ import java.util.*;
 public class Orders {
     /// Contains all the ways you can order the CSV
 
-    public List<Map<String, String>> ascendant(List<Map<String, String>> liste, String key){
+    public static List<Map<String, String>> ascendant(List<Map<String, String>> liste, Builder.Header key){
         // Sort in ascending order
 
         List<Map<String, String>> newListe = new ArrayList<>(liste);
@@ -16,7 +16,7 @@ public class Orders {
             for (int j = i + 1; j < newListe.size(); j++)
             {
                 //if (newListe.get(j) < newListe.get(index))
-                if (Comparator(newListe.get(j).get(key), newListe.get(index).get(key) ,key)){
+                if (Comparator(newListe.get(j).get(key.getValue()), newListe.get(index).get(key.getValue()), key.getValue())){
                     index = j;
                 }
             }
@@ -28,26 +28,15 @@ public class Orders {
 
         return newListe;
     }
-    public List<Map<String, String>> descendant(List<Map<String, String>> liste, String key){
+    public static List<Map<String, String>> descendant(List<Map<String, String>> liste, Builder.Header key){
         // Sort in descending order
 
-        List<Map<String, String>> newListe = new ArrayList<>(liste);
-
-        Collections.sort(newListe, new Comparator<Map<String, String>>() {
-            @Override
-            public int compare(Map<String, String> map1, Map<String, String> map2) {
-                String identifiant1 = map1.get(key);
-                String identifiant2 = map2.get(key);
-                int id1 = Integer.parseInt(identifiant1);
-                int id2 = Integer.parseInt(identifiant2);
-                return Integer.compare(id2, id1);
-            }
-        });
-
+        List<Map<String, String>> newListe = ascendant(liste, key);
+        Collections.reverse(newListe);
         return newListe;
     }
 
-    private boolean Comparator(String v1, String v2, String key){
+    private static boolean Comparator(String v1, String v2, String key){
         // return true if v1 < v2
         switch (key){
             case "Identifiant": return CompInt(v1, v2); // int
@@ -64,15 +53,15 @@ public class Orders {
         }
     }
 
-    private boolean CompInt(String v1, String v2){
+    private static boolean CompInt(String v1, String v2){
         // return true if (int)v1 < (int)v2
         return Integer.parseInt(v1) < Integer.parseInt(v2);
     }
-    private boolean CompDbl(String v1, String v2){
+    private static boolean CompDbl(String v1, String v2){
         // return true if (double)v1 < (double)v2
         return Double.parseDouble(v1) < Double.parseDouble(v2);
     }
-    private boolean CompDate(String v1, String v2){
+    private static boolean CompDate(String v1, String v2){
         // return true if (Date)v1 < (Date)v2
         // Date format (AAAA/MM/JJ)
 
@@ -87,11 +76,11 @@ public class Orders {
             default: return false;
         }
     }
-    private boolean CompAlpha(String v1, String v2){
+    private static boolean CompAlpha(String v1, String v2){
         // return true if (String)v1 < (String)v2
         return v1.compareTo(v2) < 0;
     }
-    private boolean CompTime(String v1, String v2){
+    private static boolean CompTime(String v1, String v2){
         // return true if (Time)v1 < (Time)v2
 
         int[] p1 = Objects.equals(v1, "") ? new int[0] : SplitTime(v1);
@@ -115,7 +104,7 @@ public class Orders {
         }
     }
 
-    private int[] SplitTime(String v1){
+    private static int[] SplitTime(String v1){
         String[] p1 = v1.split("\\s+");
 
         // Convertit chaque partie en entier et les ajoute au tableau
