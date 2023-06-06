@@ -14,6 +14,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Slider?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics.SeismeController"
@@ -31,19 +33,35 @@
         </VBox>
     </left>
     <center>
-        <GridPane>
-            <Label text="Type de séisme" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <GridPane styleClass="gridPane">
+            <Label styleClass="textPage1" text="Type de séisme" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Séismes" styleClass="comboBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Séisme"/>
-                        <String fx:value="merde"/>
+                        <String fx:value="Séismes"/>
+                        <String fx:value="Séismes ressentis en un lieu"/>
+                        <String fx:value="Faux séismes"/>
                     </FXCollections>
                 </items>
             </ComboBox>
-            <Label text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-
-
+            <Label styleClass="textPage1" text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="vide" ></Spinner>
+            <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="vide" ></Spinner>
+            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="6" promptText="France">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="France"/>
+                        <String fx:value="Département"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Label styleClass="textPage1" text="Niveau d'intensité macrosismique" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <Slider min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9">
+                <Button fx:id="rechercheButton" text="Recherche"/>
+            </HBox>
         </GridPane>
     </center>
 </BorderPane>

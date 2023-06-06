@@ -1,20 +1,45 @@
 
 .titre {
     -fx-text-fill: #FF8811;
-    -fx-background-color: #4A313E;
+    -fx-background-color: #0D1321;
     -fx-max-width: 950;
     -fx-font-size: 20;
 }
 
+.textPage1 {
+    -fx-text-fill: #FF8811;
+    -fx-font-size: 14;
+    -fx-spacing: 10;
+}
+
 
 .menu1Button {
-    -fx-background-color: #ABD2FA;
+    -fx-background-color: #546A76;
+    -fx-min-height: 50;
+    -fx-min-width: 20;
 }
 
 .menu2Button {
-    -fx-background-color: #89AAE6;
+    -fx-background-color: #393E41;
+    -fx-min-height: 50;
+    -fx-min-width: 20;
 }
 
 .menu3Button {
-    -fx-background-color: #F4D06F;
+    -fx-background-color: #ABD2FA;
+    -fx-min-height: 50;
+    -fx-min-width: 20;
+}
+
+.gridPane {
+    -fx-background-color: #393E41;
+}
+
+.rechercheButton {
+    -fx-alignment: center;
+}
+
+.comboBox {
+    -fx-background-color: #393E41;
+    -fx-prompt-text-fill: #FF8811;
 }
