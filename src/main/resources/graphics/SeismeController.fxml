@@ -16,22 +16,27 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Slider?>
+<?import com.sun.javafx.scene.control.ContextMenuContent.MenuBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics.SeismeController"
             stylesheets="@style.css"
-            minWidth="950" minHeight="500"
-            style="-fx-background-color: black">
+            minWidth="1000" minHeight="600">
     <top>
+        <HBox styleClass="hbox">
+            <MenuBar>
+                <Menu>
+                    <MenuItem text="Recherche"/>
+                    <MenuItem text="Resultat"/>
+                    <MenuItem text="Dashboard"/>
+                </Menu>
+            </MenuBar>
             <Label text="Recherche de séismes" styleClass="titre"/>
+        </HBox>
     </top>
-    <left>
-        <VBox>
-            <Button id="menu1" styleClass="menu1Button"/>
-            <Button id="menu2" styleClass="menu2Button"/>
-            <Button id="menu3" styleClass="menu3Button"/>
-        </VBox>
-    </left>
     <center>
         <GridPane styleClass="gridPane">
             <Label styleClass="textPage1" text="Type de séisme" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
@@ -60,7 +65,7 @@
             <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="6" promptText="vide" ></Spinner>
             <Label styleClass="textPage1" text="Niveau d'intensité macrosismique" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
             <Slider min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
-            <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.columnSpan="3">
+            <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.columnSpan="3" >
                 <Button fx:id="rechercheButton" text="Recherche"/>
             </HBox>
         </GridPane>
