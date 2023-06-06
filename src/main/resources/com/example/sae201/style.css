@@ -2,6 +2,8 @@
 .titre {
     -fx-text-fill: #FF8811;
     -fx-background-color: #4A313E;
+    -fx-max-width: 950;
+    -fx-font-size: 20;
 }
 
 

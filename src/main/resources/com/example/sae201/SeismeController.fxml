@@ -11,6 +11,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.sae201.SeismeController"
@@ -18,7 +21,7 @@
             minWidth="950" minHeight="500"
             style="-fx-background-color: black">
     <top>
-        <Label text="Recherche de séismes" styleClass="titre"/>
+            <Label text="Recherche de séismes" styleClass="titre"/>
     </top>
     <left>
         <VBox>
@@ -31,7 +34,15 @@
         <GridPane>
             <Label text="Type de séisme" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Séisme"/>
+                        <String fx:value="merde"/>
+                    </FXCollections>
+                </items>
             </ComboBox>
+            <Label text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
 
         </GridPane>
     </center>
