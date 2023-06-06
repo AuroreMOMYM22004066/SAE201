@@ -11,8 +11,8 @@ import java.util.Map;
 public class Builder {
 
     public static void main(String[] args) throws IOException {
-        String Path = "C:/Users/Bastien/Desktop/CSV/SisFrance_seismes_20230604151458.csv";
-        build(Path);
+        String Path = "C:/Users/UserName/Desktop/CSV/SisFrance_seismes_20230604151458.csv";
+        //build(Path);
     }
 
     public static void build(String path) throws IOException {
@@ -28,8 +28,7 @@ public class Builder {
         Orders ordres = new Orders();
 
         //Apply filters & orders
-        Print(filtres.AtDate(map, 1995));
-        //Print(ordres.ascendant(filtres.AtDate(map, 1995), "Date (AAAA/MM/JJ)"));
+        Print(ordres.ascendant(filtres.AtDate(map, 1995), "Date (AAAA/MM/JJ)"));
     }
 
     private static void Print(List<Map<String, String>> map){
@@ -40,6 +39,9 @@ public class Builder {
         }
         System.out.println();
     }
+
+    private static void SetelctFilter(){}
+    private static void SetelctOrder(){}
 }
 
 

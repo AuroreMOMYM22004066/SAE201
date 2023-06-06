@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6895a330-e6e1-481d-a1c7-14678d871591" name="Changes" comment="test1">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sae201/SeismeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sae201/SeismeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/sae201/SeismeController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/sae201/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Orders.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +43,18 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BuildCSV">
+    <configuration name="BuildCSV" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="datahandling.Builder" />
+      <module name="SAE201" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SeismeApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics.SeismeApplication" />
       <module name="SAE201" />
@@ -63,6 +68,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.BuildCSV" />
+      <item itemvalue="Application.SeismeApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -73,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1685980978079</updated>
       <workItem from="1685980979162" duration="9118000" />
-      <workItem from="1686035742335" duration="135000" />
+      <workItem from="1686035742335" duration="4821000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1685985663485</created>
