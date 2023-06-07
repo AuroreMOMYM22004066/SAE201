@@ -3,13 +3,16 @@ package graphics;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuBar;
+import javafx.beans.property.DoubleProperty;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
 
@@ -18,6 +21,10 @@ public class SeismeController {
 
     @FXML
     private VBox mapContainer;
+    @FXML
+    private Slider slider;
+    @FXML
+    private TextField textSlider;
 
     @FXML
     private ComboBox<String> comboBox;
@@ -30,12 +37,20 @@ public class SeismeController {
     public void initializeMapContainer(VBox mapRoot) {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
         mapContainer.getChildren().add(mapRoot);
+        createBindings();
+    }
+
+    public void createBindings() {
+        DoubleProperty doubleMacrosismique = slider.valueProperty();
+        StringConverter<Number> converter = new NumberStringConverter();
+
+        textSlider.textProperty().bindBidirectional(doubleMacrosismique, converter);
     }
 
 
     @FXML
     // Choose Department
-    private void onComboBoxSelectionChanged() {
+    private void onComboBoxSelectionChanger() {
         String DepartementSelected = comboBox.getValue().split(" ")[0];
         System.out.println("Departement choisi : " + DepartementSelected);
     }

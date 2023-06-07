@@ -13,10 +13,10 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
-
-<?import javafx.scene.control.ScrollPane?>
-<?import graphics.GluonMapExample?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1000" minHeight="600">
     <top>
         <HBox styleClass="hbox">
@@ -43,7 +43,7 @@
                 </items>
             </ComboBox>
             <Label styleClass="textPage1" text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="Départements" onAction="#onComboBoxSelectionChanged">
+            <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="Départements" onAction="#onComboBoxSelectionChanger">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="pays"/>
@@ -146,13 +146,16 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            <ComboBox fx:id="listeDepartement" visible="false"/>
+
             <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
             <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="vide" ></Spinner>
+
             <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
             <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="6" promptText="vide" ></Spinner>
-            <Label styleClass="textPage1" text="Niveau d'intensité macrosismique" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-            <Slider min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
+
+            <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <TextField fx:id="textSlider" GridPane.columnIndex="1" GridPane.rowIndex="7"></TextField>
+            <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
             <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.columnSpan="3" >
                 <Button fx:id="rechercheButton" text="Recherche"/>
             </HBox>
@@ -161,4 +164,7 @@
     <right>
         <VBox fx:id="mapContainer" />
     </right>
+    <bottom>
+        <DatePicker />
+    </bottom>
 </BorderPane>

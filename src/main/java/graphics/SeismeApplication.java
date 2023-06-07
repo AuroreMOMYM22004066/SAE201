@@ -17,6 +17,7 @@ public class SeismeApplication extends Application {
 
 
         Scene scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("Application Séisme");
         stage.show();

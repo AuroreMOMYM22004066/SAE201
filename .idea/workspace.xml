@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6895a330-e6e1-481d-a1c7-14678d871591" name="Changes" comment="test1">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController2.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController3.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Builder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Orders.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_09_26.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_09_26.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_10_55.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_10_55.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> e9eec7ae60c235307309485f31c658fea4a95e85
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics/SeismeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,10 +103,14 @@
       <workItem from="1685980979162" duration="9118000" />
       <workItem from="1686035742335" duration="135000" />
       <workItem from="1686043312920" duration="4399000" />
+<<<<<<< HEAD
       <workItem from="1686082444646" duration="7758000" />
       <workItem from="1686124184804" duration="2000" />
       <workItem from="1686124191142" duration="1563000" />
       <workItem from="1686129219486" duration="2932000" />
+=======
+      <workItem from="1686082444646" duration="3032000" />
+>>>>>>> e9eec7ae60c235307309485f31c658fea4a95e85
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1685985663485</created>
