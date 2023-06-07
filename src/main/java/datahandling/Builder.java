@@ -48,23 +48,12 @@ public class Builder {
         }
     }
 
+    // Build the CSV in a List<Map<String, String>> and return it
     public static List<Map<String, String>> build() throws IOException {
         String path = "SisFrance_seismes_20230604151458.csv";
         File f = new File("src/main/resources/CSV/" + path);
 
-        // Build the CSV in a List<Map<String, String>>
-        List<Map<String, String>> map = CSVController.ExtractCSV(path);
-
-        return map;
-    }
-
-    private static void Print(List<Map<String, String>> map){
-        // see what the map contains
-
-        for (Map<String, String> alt: map) {
-            System.out.println(alt.toString());
-        }
-        System.out.println();
+        return CSVController.ExtractCSV(path);
     }
 }
 

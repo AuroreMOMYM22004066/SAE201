@@ -95,12 +95,9 @@ public class SeismeController {
         scene.setRoot(page);
     }
 
-
     // Display the data in the TableView
     public void setTableView() throws IOException {
         // Display the content of the data in the TableView
-
-        //data = Builder.build();
 
         TableColumn<Map<String, String>, String> identifiantColumn = new TableColumn<>("Identifiant");
         identifiantColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Identifiant")));
@@ -131,22 +128,15 @@ public class SeismeController {
                 chocColumn, regionColumn, intensiteColumn, qualiteColumn
         );
 
-        if (data != null){
+        if (data != null && data.size() != 0){
             tableView.getItems().addAll(data);
+        } else if (data != null) {
+            Label emptyLabel = new Label("Aucun résultat, modifiez les filtres");
+            tableView.setPlaceholder(emptyLabel);
+        } else {
+            Label emptyLabel = new Label("Aucune donnée disponible : erreur saisie données");
+            tableView.setPlaceholder(emptyLabel);
         }
 
     }
 }
-
-
-/*
-FXML Headers :
-    <TableColumn text="Identifiant" />
-    <TableColumn text="Nom" />
-    <TableColumn text="Date (AAAA/MM/JJ)" />
-    <TableColumn text="Heure" />
-    <TableColumn text="Choc" />
-    <TableColumn text="Région épicentrale" />
-    <TableColumn text="Intensité épicentrale" />
-    <TableColumn text="Qualité intensité épicentrale" />
-*/

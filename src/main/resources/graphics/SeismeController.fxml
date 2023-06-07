@@ -31,17 +31,8 @@
         </HBox>
     </top>
     <center>
+        <Label styleClass="titre" text="Filtres :" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
         <GridPane styleClass="gridPane">
-            <Label styleClass="textPage1" text="Type de séisme" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Séismes">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Séismes"/>
-                        <String fx:value="Séismes ressentis en un lieu"/>
-                        <String fx:value="Faux séismes"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
             <Label styleClass="textPage1" text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
             <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="Départements" onAction="#onComboBoxSelectionChanger">
                 <items>
