@@ -17,7 +17,7 @@ public class CustomCircleMarkerLayer extends MapLayer {
         this.mapPoint = mapPoint;
 
         /* Cercle rouge de taille 5 */
-        this.circle = new Circle(2, Color.RED);
+        this.circle = new Circle(3, Color.RED);
 
         /* Ajoute le cercle au MapLayer */
         this.getChildren().add(circle);
@@ -29,7 +29,6 @@ public class CustomCircleMarkerLayer extends MapLayer {
         Point2D point2d = this.getMapPoint(mapPoint.getLatitude(), mapPoint.getLongitude());
 
         /* Déplace le cercle existant selon les coordonnées du point */
-
         circle.setTranslateX(point2d.getX());
         circle.setTranslateY(point2d.getY());
     }

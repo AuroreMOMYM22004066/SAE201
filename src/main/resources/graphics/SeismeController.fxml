@@ -186,7 +186,7 @@
                 <TextField fx:id="textSlider" GridPane.columnIndex="1" GridPane.rowIndex="10"></TextField>
                 <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3"/>
                 <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="3" >
-                    <Button fx:id="rechercheButton" text="Recherche"/>
+                    <Button fx:id="rechercheButton" text="Recherche" onAction="#AapplyFilters"/>
                 </HBox>
             </GridPane>
         </VBox>

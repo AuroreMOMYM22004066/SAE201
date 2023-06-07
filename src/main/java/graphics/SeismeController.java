@@ -150,6 +150,8 @@ public class SeismeController {
         MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
         GluonMapExample.addMarker(mapPoint);
     }
+
+
     @FXML
     private void AapplyFilters() throws IOException {
         // TODO : Set filters here
