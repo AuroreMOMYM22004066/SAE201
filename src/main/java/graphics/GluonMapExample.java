@@ -6,6 +6,7 @@ import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
 
+import datahandling.Builder;
 import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
@@ -13,6 +14,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GluonMapExample {
 
@@ -40,10 +42,17 @@ public class GluonMapExample {
     return root;
   }
 
-  public static void addMarker(MapPoint mapPoint) {
-    MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
-    mapView.addLayer(mapLayer);
-    mapLayers.add(mapLayer);
+  public static void addMarker(List<Map<String, String>> data) {
+
+    for (Map<String, String> line: data ) {
+      double latitude  = Double.parseDouble(line.get(Builder.Header.Latitude_WGS84.getValue()));
+      double longitude = Double.parseDouble(line.get(Builder.Header.Longitude_WGS84.getValue()));
+
+      MapPoint mapPoint = new MapPoint(latitude, longitude);
+      MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
+      mapView.addLayer(mapLayer);
+      mapLayers.add(mapLayer);
+    }
 
     refresh();
   }
@@ -61,6 +70,11 @@ public class GluonMapExample {
     mapView.flyTo(0, newCenter, 0.1);
   }
 
+  static void removeMarkers(){
+    for (MapLayer mapLayer: mapLayers ) {
+      mapView.removeLayer(mapLayer);
+    }
+  }
 
 
 }

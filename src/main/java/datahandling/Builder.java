@@ -48,12 +48,16 @@ public class Builder {
         }
     }
 
+    public static List<Map<String, String>> AllData; // without filters
+    public static List<Map<String, String>> data; // with filters
+
     // Build the CSV in a List<Map<String, String>> and return it
-    public static List<Map<String, String>> build() throws IOException {
+    public static void build() throws IOException {
         String path = "SisFrance_seismes_20230604151458.csv";
         File f = new File("src/main/resources/CSV/" + path);
 
-        return CSVController.ExtractCSV(path);
+        AllData = CSVController.ExtractCSV(path);
+        data = AllData;
     }
 }
 

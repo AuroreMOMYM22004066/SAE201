@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static graphics.GluonMapExample.mapView;
+
 public class SeismeController {
 
 
@@ -38,18 +40,23 @@ public class SeismeController {
     private MenuBar menuBar;
 
     @FXML
-    private List<Map<String, String>> AllData; // without filters
-    @FXML
-    private List<Map<String, String>> data; // with filters
-    @FXML
     private TableView<Map<String, String>> tableView;
 
     @FXML
     private String DepartementSelected;
 
     // Shows the map in the fxml window
-    public void initializeMapContainer(VBox mapRoot) {
+    public void initializeMainPage(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
+
+        Builder.build();
+
+        Builder.data = Filters.AtDate(Builder.data, "1996");
+
+        for (Map<String, String> dat: Builder.data) {
+            System.out.println(dat);
+        }
+
         mapContainer.getChildren().add(mapRoot);
         createBindings();
     }
@@ -76,7 +83,7 @@ public class SeismeController {
 
         SeismeController controller = fxmlLoader.getController();
         VBox mapRoot = GluonMapExample.displayMap();
-        controller.initializeMapContainer(mapRoot);
+        controller.initializeMainPage(mapRoot);
 
         Scene scene = menuBar.getScene();
         scene.setRoot(page);
@@ -88,7 +95,7 @@ public class SeismeController {
         Parent page = fxmlLoader.load();
 
         SeismeController controller = fxmlLoader.getController();
-        controller.setTableView();
+        controller.setTableView(Builder.data);
 
         Scene scene = menuBar.getScene();
         scene.setRoot(page);
@@ -97,12 +104,13 @@ public class SeismeController {
     // GOTO page 3
     private void chargerPage3(ActionEvent event) throws IOException {
         Parent page = FXMLLoader.load(getClass().getResource("SeismeController3.fxml"));
+
         Scene scene = menuBar.getScene();
         scene.setRoot(page);
     }
 
     // Display the data in the TableView
-    public void setTableView() throws IOException {
+    public void setTableView(List<Map<String, String>> data) throws IOException {
         // Display the content of the data in the TableView
 
         TableColumn<Map<String, String>, String> identifiantColumn = new TableColumn<>("Identifiant");
@@ -134,7 +142,7 @@ public class SeismeController {
                 chocColumn, regionColumn, intensiteColumn, qualiteColumn
         );
 
-        if (data != null && data.size() != 0){
+        if (data != null && data.size() > 0){
             tableView.getItems().addAll(data);
         } else if (data != null) {
             Label emptyLabel = new Label("Aucun résultat, modifiez les filtres");
@@ -147,17 +155,15 @@ public class SeismeController {
     }
 
     private  void UpdateMapPoints() {
-        MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
-        GluonMapExample.addMarker(mapPoint);
+        mapView.flyTo(0, new MapPoint(46.227638, 2.213749), 0.1);
+
+        GluonMapExample.addMarker(Builder.data);
     }
 
 
     @FXML
-    private void AapplyFilters() throws IOException {
+    private void AapplyFilters() {
         // TODO : Set filters here
-
-        AllData = Builder.build();
-        data = Filters.AtDate(AllData, "1996");
 
         UpdateMapPoints();
     }
