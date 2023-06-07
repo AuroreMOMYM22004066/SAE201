@@ -1,5 +1,6 @@
 package graphics;
 
+import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
@@ -7,47 +8,74 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class GluonMapExample {
 
- public static VBox displayMap() {
+  private static MapView mapView;
+  private static List<MapLayer> mapLayers = new ArrayList<>();
 
-  Stage stage = new Stage();
+  public static VBox displayMap() {
 
-  /* Définit la plate-forme pour éviter "javafx.platform is not defined" */
-  System.setProperty("javafx.platform", "desktop");
+    Stage stage = new Stage();
 
-  /*
-   * Définit l'user agent pour éviter l'exception
-   * "Server returned HTTP response code: 403"
-   */
-  System.setProperty("http.agent", "Gluon Mobile/1.0.3");
+    /* Définit la plate-forme pour éviter "javafx.platform is not defined" */
+    System.setProperty("javafx.platform", "desktop");
 
-  VBox root = new VBox();
+    /*
+     * Définit l'user agent pour éviter l'exception
+     * "Server returned HTTP response code: 403"
+     */
+    System.setProperty("http.agent", "Gluon Mobile/1.0.3");
 
-  /* Création de la carte Gluon JavaFX */
-  MapView mapView = new MapView();
+    VBox root = new VBox();
 
-  /* Création du point avec latitude et longitude */
-  MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
+    /* Création de la carte Gluon JavaFX */
+    MapView mapView = new MapView();
 
-  /* Création et ajoute une couche à la carte */
+    /* Création du point avec latitude et longitude */
+    MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
 
-  // MapLayer mapLayer = new CustomPinLayer(mapPoint);
-  // MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
-  // mapView.addLayer(mapLayer);
+    /* Création et ajoute une couche à la carte */
 
-  /* Zoom de 5 */
-  mapView.setZoom(5);
+    // MapLayer mapLayer = new CustomPinLayer(mapPoint);
+    // MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
+    // mapView.addLayer(mapLayer);
 
-  /* Centre la carte sur le point */
-  mapView.flyTo(0, mapPoint, 0.1);
+    /* Zoom de 5 */
+    mapView.setZoom(5);
 
-  mapView.setMinSize(500, 500);
-  mapView.setMaxSize(500, 500);
+    /* Centre la carte sur le point */
+    mapView.flyTo(0, mapPoint, 0.1);
 
-  root.getChildren().add(mapView);
+    mapView.setMinSize(500, 500);
+    mapView.setMaxSize(500, 500);
 
-  return root;
- }
+    root.getChildren().add(mapView);
+
+    return root;
+  }
+
+  public static void addMarker(MapPoint mapPoint) {
+    MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
+    mapView.addLayer(mapLayer);
+    mapLayers.add(mapLayer);
+
+    refresh();
+  }
+
+  private static void refresh() {
+    MapPoint currentCenter = mapView.getCenter();
+    double latitude = currentCenter.getLatitude();
+    double longitude = currentCenter.getLongitude();
+
+    double dep = 0.0000000000001;
+    MapPoint newCenter = new MapPoint(latitude + dep, longitude - dep);
+
+    // Déplacement de la carte vers les nouvelles coordonnées
+    mapView.flyTo(0, newCenter, 0.1);
+  }
 
 }

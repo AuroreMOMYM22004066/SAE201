@@ -1,6 +1,8 @@
 package graphics;
 
+import com.gluonhq.maps.MapPoint;
 import datahandling.Builder;
+import datahandling.Filters;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,10 +38,14 @@ public class SeismeController {
     private MenuBar menuBar;
 
     @FXML
-    private List<Map<String, String>> data;
+    private List<Map<String, String>> AllData; // without filters
+    @FXML
+    private List<Map<String, String>> data; // with filters
     @FXML
     private TableView<Map<String, String>> tableView;
 
+    @FXML
+    private String DepartementSelected;
 
     // Shows the map in the fxml window
     public void initializeMapContainer(VBox mapRoot) {
@@ -138,5 +144,19 @@ public class SeismeController {
             tableView.setPlaceholder(emptyLabel);
         }
 
+    }
+
+    private  void UpdateMapPoints() {
+        MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
+        GluonMapExample.addMarker(mapPoint);
+    }
+    @FXML
+    private void AapplyFilters() throws IOException {
+        // TODO : Set filters here
+
+        AllData = Builder.build();
+        data = Filters.AtDate(AllData, "1996");
+
+        UpdateMapPoints();
     }
 }
