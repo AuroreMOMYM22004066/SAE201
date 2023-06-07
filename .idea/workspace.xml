@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6895a330-e6e1-481d-a1c7-14678d871591" name="Changes" comment="test1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datahandling/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datahandling/Orders.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController2.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +106,7 @@
       <workItem from="1686124191142" duration="1563000" />
       <workItem from="1686129219486" duration="2932000" />
       <workItem from="1686082444646" duration="3032000" />
-      <workItem from="1686133612948" duration="11600000" />
+      <workItem from="1686133612948" duration="12916000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1685985663485</created>

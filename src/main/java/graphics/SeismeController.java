@@ -14,6 +14,7 @@ import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -95,11 +96,11 @@ public class SeismeController {
     }
 
 
-
-
-
+    // Display the data in the TableView
     public void setTableView() throws IOException {
-        data = Builder.build();
+        // Display the content of the data in the TableView
+
+        //data = Builder.build();
 
         TableColumn<Map<String, String>, String> identifiantColumn = new TableColumn<>("Identifiant");
         identifiantColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Identifiant")));
@@ -130,7 +131,10 @@ public class SeismeController {
                 chocColumn, regionColumn, intensiteColumn, qualiteColumn
         );
 
-        tableView.getItems().addAll(data);
+        if (data != null){
+            tableView.getItems().addAll(data);
+        }
+
     }
 }
 

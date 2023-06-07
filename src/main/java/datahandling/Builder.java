@@ -19,12 +19,6 @@ public class Builder {
         AtPointRGF,
         AtPointWGS
     }
-    public enum Order{
-        // Will be use in dropdown & select order
-        Ascending,
-        Descending,
-        Neutral
-    }
     public enum Header{
         Identifiant("Identifiant"),
         Date("Date (AAAA/MM/JJ)"),
@@ -71,34 +65,6 @@ public class Builder {
             System.out.println(alt.toString());
         }
         System.out.println();
-    }
-
-    /*
-    private static List<Map<String, String>> SetelctFilter(Filter filtre, List<Map<String, String>> map){
-        switch (filtre){
-            case WithIdentifier :  return Filters.WithIdentifier(map, )
-            case WithName : return
-            case WithChoc : return
-            case WithQIE : return
-            case AtDate : return
-            case BetweenDate : return
-            case AtRegion : return
-            case AtPointRGF : return
-            case AtPointWGS : return
-
-            default: throw new IllegalArgumentException("Wrong Filter");
-        }
-    }
-    */
-
-
-    private static List<Map<String, String>> SetelctOrder(Order ordre, List<Map<String, String>> map, Header key){
-        switch (ordre){
-            case Ascending : return Orders.ascendant(map, key);
-            case Descending: return Orders.descendant(map, key);
-            case Neutral   : return map;
-            default: throw new IllegalArgumentException("Wrong Order");
-        }
     }
 }
 
