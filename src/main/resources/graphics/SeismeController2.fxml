@@ -29,16 +29,6 @@
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                 </columnResizePolicy>
-                <columns>
-                    <TableColumn text="Identifiant" />
-                    <TableColumn text="Nom" />
-                    <TableColumn text="Date (AAAA/MM/JJ)" />
-                    <TableColumn text="Heure" />
-                    <TableColumn text="Choc" />
-                    <TableColumn text="Région épicentrale" />
-                    <TableColumn text="Intensité épicentrale" />
-                    <TableColumn text="Qualité intensité épicentrale" />
-                </columns>
             </TableView>
         </HBox>
     </center>

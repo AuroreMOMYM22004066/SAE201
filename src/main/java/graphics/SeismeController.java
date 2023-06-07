@@ -1,7 +1,7 @@
 package graphics;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import datahandling.Builder;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.beans.property.DoubleProperty;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -100,45 +99,38 @@ public class SeismeController {
 
 
     public void setTableView() throws IOException {
-        data = datahandling.Builder.build();
+        data = Builder.build();
 
-        System.out.println(data.size());
-
-        /*
         TableColumn<Map<String, String>, String> identifiantColumn = new TableColumn<>("Identifiant");
-        identifiantColumn.setCellValueFactory(new PropertyValueFactory<>("Identifiant"));
+        identifiantColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Identifiant")));
 
         TableColumn<Map<String, String>, String> nomColumn = new TableColumn<>("Nom");
-        nomColumn.setCellValueFactory(new PropertyValueFactory<>("Nom"));
+        nomColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Nom")));
 
         TableColumn<Map<String, String>, String> dateColumn = new TableColumn<>("Date (AAAA/MM/JJ)");
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("Date (AAAA/MM/JJ)"));
+        dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Date (AAAA/MM/JJ)")));
 
         TableColumn<Map<String, String>, String> heureColumn = new TableColumn<>("Heure");
-        heureColumn.setCellValueFactory(new PropertyValueFactory<>("Heure"));
+        heureColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Heure")));
 
         TableColumn<Map<String, String>, String> chocColumn = new TableColumn<>("Choc");
-        chocColumn.setCellValueFactory(new PropertyValueFactory<>("Choc"));
+        chocColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Choc")));
 
         TableColumn<Map<String, String>, String> regionColumn = new TableColumn<>("Région épicentrale");
-        regionColumn.setCellValueFactory(new PropertyValueFactory<>("Région épicentrale"));
+        regionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Région épicentrale")));
 
         TableColumn<Map<String, String>, String> intensiteColumn = new TableColumn<>("Intensité épicentrale");
-        intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("Intensité épicentrale"));
+        intensiteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Intensité épicentrale")));
 
         TableColumn<Map<String, String>, String> qualiteColumn = new TableColumn<>("Qualité intensité épicentrale");
-        qualiteColumn.setCellValueFactory(new PropertyValueFactory<>("Qualité intensité épicentrale"));
+        qualiteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("Qualité intensité épicentrale")));
 
         tableView.getColumns().addAll(
                 identifiantColumn, nomColumn, dateColumn, heureColumn,
                 chocColumn, regionColumn, intensiteColumn, qualiteColumn
         );
 
-        // Remplir le tableau avec les données
-        for (Map<String, String> item : data) {
-            tableView.getItems().add(item);
-        }
-        */
+        tableView.getItems().addAll(data);
     }
 }
 
