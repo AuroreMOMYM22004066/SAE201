@@ -59,9 +59,24 @@ public class SeismeController {
     public void changerDePage(String cheminFXML) {
         // Used to change Page
         try {
-            Parent page = FXMLLoader.load(getClass().getResource(cheminFXML));
-            Scene scene = menuBar.getScene();
-            scene.setRoot(page);
+            if (cheminFXML.equals("SeismeController.fxml")){
+                FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController.fxml"));
+                Parent page = fxmlLoader.load();
+
+                // Get the controller instance
+                SeismeController controller = fxmlLoader.getController();
+                // Initialize the VBox with the map
+                VBox mapRoot = GluonMapExample.displayMap();
+                controller.initializeMapContainer(mapRoot);
+
+                Scene scene = menuBar.getScene();
+                scene.setRoot(page);
+
+            } else {
+                Parent page = FXMLLoader.load(getClass().getResource(cheminFXML));
+                Scene scene = menuBar.getScene();
+                scene.setRoot(page);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
