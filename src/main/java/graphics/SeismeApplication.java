@@ -15,6 +15,7 @@ public class SeismeApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("Application Séisme");
         stage.show();
