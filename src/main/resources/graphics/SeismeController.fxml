@@ -31,131 +31,167 @@
         </HBox>
     </top>
     <center>
-        <Label styleClass="titre" text="Filtres :" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-        <GridPane styleClass="gridPane">
-            <Label styleClass="textPage1" text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="Départements" onAction="#onComboBoxSelectionChanger">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="pays"/>
-                        <String fx:value="Ain (01)"/>
-                        <String fx:value="Aisne (02)"/>
-                        <String fx:value="Allier (03)"/>
-                        <String fx:value="Alpes-de-Haute-Provence (04)"/>
-                        <String fx:value="Hautes-Alpes (05)"/>
-                        <String fx:value="Alpes-Maritimes (06)"/>
-                        <String fx:value="Ardèche (07)"/>
-                        <String fx:value="Ardennes (08)"/>
-                        <String fx:value="Ariège (09)"/>
-                        <String fx:value="Aube (10)"/>
-                        <String fx:value="Aude (11)"/>
-                        <String fx:value="Aveyron (12)"/>
-                        <String fx:value="Bouches-du-Rhône (13)"/>
-                        <String fx:value="Calvados (14)"/>
-                        <String fx:value="Cantal (15)"/>
-                        <String fx:value="Charente (16)"/>
-                        <String fx:value="Charente-Maritime (17)"/>
-                        <String fx:value="Cher (18)"/>
-                        <String fx:value="Corrèze (19)"/>
-                        <String fx:value="Côte-d'Or (21)"/>
-                        <String fx:value="Côtes-d'Armor (22)"/>
-                        <String fx:value="Creuse (23)"/>
-                        <String fx:value="Dordogne (24)"/>
-                        <String fx:value="Doubs (25)"/>
-                        <String fx:value="Drôme (26)"/>
-                        <String fx:value="Eure (27)"/>
-                        <String fx:value="Eure-et-Loir (28)"/>
-                        <String fx:value="Finistère (29)"/>
-                        <String fx:value="Corse-du-Sud (2A)"/>
-                        <String fx:value="Haute-Corse (2B)"/>
-                        <String fx:value="Gard (30)"/>
-                        <String fx:value="Haute-Garonne (31)"/>
-                        <String fx:value="Gers (32)"/>
-                        <String fx:value="Gironde (33)"/>
-                        <String fx:value="Hérault (34)"/>
-                        <String fx:value="Ille-et-Vilaine (35)"/>
-                        <String fx:value="Indre (36)"/>
-                        <String fx:value="Indre-et-Loire (37)"/>
-                        <String fx:value="Isère (38)"/>
-                        <String fx:value="Jura (39)"/>
-                        <String fx:value="Landes (40)"/>
-                        <String fx:value="Loir-et-Cher (41)"/>
-                        <String fx:value="Loire (42)"/>
-                        <String fx:value="Haute-Loire (43)"/>
-                        <String fx:value="Loire-Atlantique (44)"/>
-                        <String fx:value="Loiret (45)"/>
-                        <String fx:value="Lot (46)"/>
-                        <String fx:value="Lot-et-Garonne (47)"/>
-                        <String fx:value="Lozère (48)"/>
-                        <String fx:value="Maine-et-Loire (49)"/>
-                        <String fx:value="Manche (50)"/>
-                        <String fx:value="Marne (51)"/>
-                        <String fx:value="Haute-Marne (52)"/>
-                        <String fx:value="Mayenne (53)"/>
-                        <String fx:value="Meurthe-et-Moselle (54)"/>
-                        <String fx:value="Meuse (55)"/>
-                        <String fx:value="Morbihan (56)"/>
-                        <String fx:value="Moselle (57)"/>
-                        <String fx:value="Nièvre (58)"/>
-                        <String fx:value="Nord (59)"/>
-                        <String fx:value="Oise (60)"/>
-                        <String fx:value="Orne (61)"/>
-                        <String fx:value="Pas-de-Calais (62)"/>
-                        <String fx:value="Puy-de-Dôme (63)"/>
-                        <String fx:value="Pyrénées-Atlantiques (64)"/>
-                        <String fx:value="Hautes-Pyrénées (65)"/>
-                        <String fx:value="Pyrénées-Orientales (66)"/>
-                        <String fx:value="Bas-Rhin (67)"/>
-                        <String fx:value="Haut-Rhin (68)"/>
-                        <String fx:value="Rhône (69)"/>
-                        <String fx:value="Haute-Saône (70)"/>
-                        <String fx:value="Saône-et-Loire (71)"/>
-                        <String fx:value="Sarthe (72)"/>
-                        <String fx:value="Savoie (73)"/>
-                        <String fx:value="Haute-Savoie (74)"/>
-                        <String fx:value="Paris (75)"/>
-                        <String fx:value="Seine-Maritime (76)"/>
-                        <String fx:value="Seine-et-Marne (77)"/>
-                        <String fx:value="Yvelines (78)"/>
-                        <String fx:value="Deux-Sèvres (79)"/>
-                        <String fx:value="Somme (80)"/>
-                        <String fx:value="Tarn (81)"/>
-                        <String fx:value="Tarn-et-Garonne (82)"/>
-                        <String fx:value="Var (83)"/>
-                        <String fx:value="Vaucluse (84)"/>
-                        <String fx:value="Vendée (85)"/>
-                        <String fx:value="Vienne (86)"/>
-                        <String fx:value="Haute-Vienne (87)"/>
-                        <String fx:value="Vosges (88)"/>
-                        <String fx:value="Yonne (89)"/>
-                        <String fx:value="Territoire-de-Belfort (90)"/>
-                        <String fx:value="Essonne (91)"/>
-                        <String fx:value="Hauts-de-Seine (92)"/>
-                        <String fx:value="Seine-Saint-Denis (93)"/>
-                        <String fx:value="Val-de-Marne (94)"/>
-                        <String fx:value="Val-d'Oise (95)"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
+        <VBox>
+            <Label text="(tous les champs sont facultatif)"/>
 
-            <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-            <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="vide" ></Spinner>
+            <GridPane styleClass="gridPane">
+                <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-            <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-            <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="6" promptText="vide" ></Spinner>
+                <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="2" promptText="Départements" onAction="#onComboBoxSelectionChanger">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="pays"/>
+                            <String fx:value="Ain (01)"/>
+                            <String fx:value="Aisne (02)"/>
+                            <String fx:value="Allier (03)"/>
+                            <String fx:value="Alpes-de-Haute-Provence (04)"/>
+                            <String fx:value="Hautes-Alpes (05)"/>
+                            <String fx:value="Alpes-Maritimes (06)"/>
+                            <String fx:value="Ardèche (07)"/>
+                            <String fx:value="Ardennes (08)"/>
+                            <String fx:value="Ariège (09)"/>
+                            <String fx:value="Aube (10)"/>
+                            <String fx:value="Aude (11)"/>
+                            <String fx:value="Aveyron (12)"/>
+                            <String fx:value="Bouches-du-Rhône (13)"/>
+                            <String fx:value="Calvados (14)"/>
+                            <String fx:value="Cantal (15)"/>
+                            <String fx:value="Charente (16)"/>
+                            <String fx:value="Charente-Maritime (17)"/>
+                            <String fx:value="Cher (18)"/>
+                            <String fx:value="Corrèze (19)"/>
+                            <String fx:value="Côte-d'Or (21)"/>
+                            <String fx:value="Côtes-d'Armor (22)"/>
+                            <String fx:value="Creuse (23)"/>
+                            <String fx:value="Dordogne (24)"/>
+                            <String fx:value="Doubs (25)"/>
+                            <String fx:value="Drôme (26)"/>
+                            <String fx:value="Eure (27)"/>
+                            <String fx:value="Eure-et-Loir (28)"/>
+                            <String fx:value="Finistère (29)"/>
+                            <String fx:value="Corse-du-Sud (2A)"/>
+                            <String fx:value="Haute-Corse (2B)"/>
+                            <String fx:value="Gard (30)"/>
+                            <String fx:value="Haute-Garonne (31)"/>
+                            <String fx:value="Gers (32)"/>
+                            <String fx:value="Gironde (33)"/>
+                            <String fx:value="Hérault (34)"/>
+                            <String fx:value="Ille-et-Vilaine (35)"/>
+                            <String fx:value="Indre (36)"/>
+                            <String fx:value="Indre-et-Loire (37)"/>
+                            <String fx:value="Isère (38)"/>
+                            <String fx:value="Jura (39)"/>
+                            <String fx:value="Landes (40)"/>
+                            <String fx:value="Loir-et-Cher (41)"/>
+                            <String fx:value="Loire (42)"/>
+                            <String fx:value="Haute-Loire (43)"/>
+                            <String fx:value="Loire-Atlantique (44)"/>
+                            <String fx:value="Loiret (45)"/>
+                            <String fx:value="Lot (46)"/>
+                            <String fx:value="Lot-et-Garonne (47)"/>
+                            <String fx:value="Lozère (48)"/>
+                            <String fx:value="Maine-et-Loire (49)"/>
+                            <String fx:value="Manche (50)"/>
+                            <String fx:value="Marne (51)"/>
+                            <String fx:value="Haute-Marne (52)"/>
+                            <String fx:value="Mayenne (53)"/>
+                            <String fx:value="Meurthe-et-Moselle (54)"/>
+                            <String fx:value="Meuse (55)"/>
+                            <String fx:value="Morbihan (56)"/>
+                            <String fx:value="Moselle (57)"/>
+                            <String fx:value="Nièvre (58)"/>
+                            <String fx:value="Nord (59)"/>
+                            <String fx:value="Oise (60)"/>
+                            <String fx:value="Orne (61)"/>
+                            <String fx:value="Pas-de-Calais (62)"/>
+                            <String fx:value="Puy-de-Dôme (63)"/>
+                            <String fx:value="Pyrénées-Atlantiques (64)"/>
+                            <String fx:value="Hautes-Pyrénées (65)"/>
+                            <String fx:value="Pyrénées-Orientales (66)"/>
+                            <String fx:value="Bas-Rhin (67)"/>
+                            <String fx:value="Haut-Rhin (68)"/>
+                            <String fx:value="Rhône (69)"/>
+                            <String fx:value="Haute-Saône (70)"/>
+                            <String fx:value="Saône-et-Loire (71)"/>
+                            <String fx:value="Sarthe (72)"/>
+                            <String fx:value="Savoie (73)"/>
+                            <String fx:value="Haute-Savoie (74)"/>
+                            <String fx:value="Paris (75)"/>
+                            <String fx:value="Seine-Maritime (76)"/>
+                            <String fx:value="Seine-et-Marne (77)"/>
+                            <String fx:value="Yvelines (78)"/>
+                            <String fx:value="Deux-Sèvres (79)"/>
+                            <String fx:value="Somme (80)"/>
+                            <String fx:value="Tarn (81)"/>
+                            <String fx:value="Tarn-et-Garonne (82)"/>
+                            <String fx:value="Var (83)"/>
+                            <String fx:value="Vaucluse (84)"/>
+                            <String fx:value="Vendée (85)"/>
+                            <String fx:value="Vienne (86)"/>
+                            <String fx:value="Haute-Vienne (87)"/>
+                            <String fx:value="Vosges (88)"/>
+                            <String fx:value="Yonne (89)"/>
+                            <String fx:value="Territoire-de-Belfort (90)"/>
+                            <String fx:value="Essonne (91)"/>
+                            <String fx:value="Hauts-de-Seine (92)"/>
+                            <String fx:value="Seine-Saint-Denis (93)"/>
+                            <String fx:value="Val-de-Marne (94)"/>
+                            <String fx:value="Val-d'Oise (95)"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-            <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-            <TextField fx:id="textSlider" GridPane.columnIndex="1" GridPane.rowIndex="7"></TextField>
-            <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"/>
-            <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.columnSpan="3" >
-                <Button fx:id="rechercheButton" text="Recherche"/>
-            </HBox>
-        </GridPane>
+                <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="vide" ></Spinner>
+
+                <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="vide" ></Spinner>
+
+                <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="6">
+                    <Label styleClass="textPage1" text="De"/>
+                    <DatePicker/>
+                </HBox>
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <Label styleClass="textPage1" text="à"/>
+                    <DatePicker/>
+                </HBox>
+
+                <Label styleClass="textPage1" text="Heure : " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="8">
+                    <TextField/>
+                    <Label styleClass="textPage1" text="h"/>
+                </HBox>
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="8">
+                    <TextField/>
+                    <Label styleClass="textPage1" text="min"/>
+                </HBox>
+                <HBox GridPane.columnIndex="2" GridPane.rowIndex="8">
+                    <TextField/>
+                    <Label styleClass="textPage1" text="sec"/>
+                </HBox>
+
+                <Label styleClass="textPage1" text="Choc : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <ComboBox fx:id="comboBoxChoc" GridPane.columnIndex="1" GridPane.rowIndex="9" promptText="choc">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="jsp"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                <TextField fx:id="textSlider" GridPane.columnIndex="1" GridPane.rowIndex="10"></TextField>
+                <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3"/>
+                <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="3" >
+                    <Button fx:id="rechercheButton" text="Recherche"/>
+                </HBox>
+            </GridPane>
+        </VBox>
     </center>
     <right>
         <VBox fx:id="mapContainer" />
     </right>
-    <bottom>
-        <DatePicker />
-    </bottom>
 </BorderPane>
