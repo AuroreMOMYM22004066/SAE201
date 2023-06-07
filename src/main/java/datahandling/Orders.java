@@ -45,11 +45,11 @@ public class Orders {
 
             case "Région épicentrale": case "Nom": case "Choc": case "Qualité intensité épicentrale": return CompAlpha(v1, v2); // Alphabetique
 
-            case "Latitude en WGS 84": case "Longitude en WGS 84": case "X RGF93/L93": case "Y RGF93/L93": case "Intensité épicentrale": return CompDbl(v1, v2);// double
+            case "Latitude en WGS 84": case "Longitude en WGS 84": case "X RGF93/L93": case "Y RGF93/L93": case "Intensité épicentrale": return CompDbl(v1, v2); // double
 
             case "Heure": return CompTime(v1, v2); // int
 
-            default: return false;
+            default: throw new IllegalArgumentException("Unknown key");
         }
     }
 

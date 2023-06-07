@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1000" minHeight="600">
+    <top>
+        <HBox styleClass="hbox">
+            <MenuBar fx:id="menuBar">
+                <Menu text="Pages">
+                    <MenuItem text="Recherche" onAction="#chargerPage1"/>
+                    <MenuItem text="Resultat"  onAction="#chargerPage2"/>
+                    <MenuItem text="Dashboard" onAction="#chargerPage3"/>
+                </Menu>
+            </MenuBar>
+            <Label text="Recherche de séismes" styleClass="titre"/>
+        </HBox>
+    </top>
+</BorderPane>

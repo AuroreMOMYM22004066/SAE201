@@ -56,13 +56,13 @@ public class Builder {
         String Path = "C:/Users/UserName/Desktop/CSV/SisFrance_seismes_20230604151458.csv";
         //build(Path);
 
-        Header header = Header.Nom;
+        Header header = Header.Choc;
         System.out.println(header.getValue());
     }
 
     public static void build(String path) throws IOException {
         // The path must lead to a CSV file
-        // ex: "C:/Users/UsersName/Desktop/monFichier.csv"
+        // ex: "C:/Users/<user>/Desktop/monFichier.csv"
 
         // Build the CSV in a List<Map<String, String>>
         CSVController cc = new CSVController();

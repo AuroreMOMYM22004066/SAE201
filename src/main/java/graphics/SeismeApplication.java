@@ -14,6 +14,8 @@ public class SeismeApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController.fxml"));
         Parent root = fxmlLoader.load();
+
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Application Séisme");

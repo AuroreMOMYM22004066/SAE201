@@ -17,18 +17,14 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import graphics.GluonMapExample?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="graphics.SeismeController"
-            stylesheets="@style.css"
-            minWidth="1000" minHeight="600">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1000" minHeight="600">
     <top>
         <HBox styleClass="hbox">
-            <MenuBar>
-                <Menu>
-                    <MenuItem text="Recherche"/>
-                    <MenuItem text="Resultat"/>
-                    <MenuItem text="Dashboard"/>
+            <MenuBar fx:id="menuBar">
+                <Menu text="Pages">
+                    <MenuItem text="Recherche" onAction="#chargerPage1"/>
+                    <MenuItem text="Resultat"  onAction="#chargerPage2"/>
+                    <MenuItem text="Dashboard" onAction="#chargerPage3"/>
                 </Menu>
             </MenuBar>
             <Label text="Recherche de séismes" styleClass="titre"/>
@@ -47,7 +43,7 @@
                 </items>
             </ComboBox>
             <Label styleClass="textPage1" text="Localisation" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="Départements">
+            <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="4" promptText="Départements" onAction="#onComboBoxSelectionChanged">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="pays"/>
