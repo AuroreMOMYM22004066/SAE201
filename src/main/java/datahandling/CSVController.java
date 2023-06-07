@@ -1,6 +1,7 @@
 package datahandling;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -8,19 +9,24 @@ import java.util.*;
 
 public class CSVController {
 
-    private List<String> Content;
-    private List<String> Header;
+    private static List<String> Content;
+    private static List<String> Header;
     private List<Map<String, String>> Data;
 
 
-    public List<Map<String, String>> ExtractCSV(String path) throws IOException {
+    public static List<Map<String, String>> ExtractCSV(String path) throws IOException {
         // Creates the CSV
-        OpenCsv(path);
+        String AbsolutePath = GetPath(path);
+        OpenCsv(AbsolutePath);
         ParserHeader();
         return ParserData();
     }
 
-    private void OpenCsv(String path) throws IOException {
+    private static String GetPath(String path){
+        File f = new File("src/main/resources/CSV/" + path);
+        return f.getPath();
+    }
+    private static void OpenCsv(String path) throws IOException {
         // Get the contents of the CSV file
 
         Content = new ArrayList<>();
@@ -32,7 +38,7 @@ public class CSVController {
         }
     }
 
-    private List<String> ParserLine(int index){
+    private static List<String> ParserLine(int index){
         // Pars the given line
         List<String> line = new ArrayList<>();
         String[] data = Content.get(index).split(",");
@@ -44,13 +50,13 @@ public class CSVController {
         return line;
     }
 
-    private void ParserHeader() {
+    private static void ParserHeader() {
         // Set the Header of the CSV
 
         Header = ParserLine(0);
     }
 
-    private List<Map<String, String>> ParserData() {
+    private static List<Map<String, String>> ParserData() {
         // Set the DATA of the CSV
 
         List<Map<String, String>> Data = new ArrayList<>();

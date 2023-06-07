@@ -1,5 +1,6 @@
 package datahandling;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,8 @@ public class Builder {
     public enum Order{
         // Will be use in dropdown & select order
         Ascending,
-        Descending
+        Descending,
+        Neutral
     }
     public enum Header{
         Identifiant("Identifiant"),
@@ -52,28 +54,14 @@ public class Builder {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        String Path = "C:/Users/UserName/Desktop/CSV/SisFrance_seismes_20230604151458.csv";
-        //build(Path);
-
-        Header header = Header.Choc;
-        System.out.println(header.getValue());
-    }
-
-    public static void build(String path) throws IOException {
-        // The path must lead to a CSV file
-        // ex: "C:/Users/<user>/Desktop/monFichier.csv"
+    public static List<Map<String, String>> build() throws IOException {
+        String path = "SisFrance_seismes_20230604151458.csv";
+        File f = new File("src/main/resources/CSV/" + path);
 
         // Build the CSV in a List<Map<String, String>>
-        CSVController cc = new CSVController();
-        List<Map<String, String>> map = cc.ExtractCSV(path);
+        List<Map<String, String>> map = CSVController.ExtractCSV(path);
 
-        // Initialisation of assets
-        Filters filtres = new Filters();
-        Orders ordres = new Orders();
-
-        //Apply filters & orders
-        Print(ordres.ascendant(filtres.AtDate(map, "1995"), Header.Date));
+        return map;
     }
 
     private static void Print(List<Map<String, String>> map){
@@ -85,9 +73,9 @@ public class Builder {
         System.out.println();
     }
 
+    /*
     private static List<Map<String, String>> SetelctFilter(Filter filtre, List<Map<String, String>> map){
         switch (filtre){
-            /*
             case WithIdentifier :  return Filters.WithIdentifier(map, )
             case WithName : return
             case WithChoc : return
@@ -97,14 +85,18 @@ public class Builder {
             case AtRegion : return
             case AtPointRGF : return
             case AtPointWGS : return
-            */
+
             default: throw new IllegalArgumentException("Wrong Filter");
         }
     }
+    */
+
+
     private static List<Map<String, String>> SetelctOrder(Order ordre, List<Map<String, String>> map, Header key){
         switch (ordre){
-            case Ascending: return Orders.ascendant(map, key);
+            case Ascending : return Orders.ascendant(map, key);
             case Descending: return Orders.descendant(map, key);
+            case Neutral   : return map;
             default: throw new IllegalArgumentException("Wrong Order");
         }
     }

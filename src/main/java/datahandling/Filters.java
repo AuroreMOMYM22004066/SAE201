@@ -58,6 +58,7 @@ public class Filters {
     }
     public static List<Map<String, String>> BetweenDate(List<Map<String, String>> CSV, int yearMin, int yearMax){
         // Between two specified Dates "yearMin" & "yearMax"
+        // TODO : faire le filtre avec AAAA/MM/JJ
         if (yearMax < yearMin){ int tmp = yearMin; yearMin = yearMax; yearMax = tmp; }
 
         List<Map<String, String>> data = new ArrayList<>();
