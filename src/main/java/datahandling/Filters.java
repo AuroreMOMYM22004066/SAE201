@@ -1,18 +1,30 @@
 package datahandling;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Filters {
     /// Contains all filters that can be applied on the actual list that represent the CSV
+
     public static List<Map<String, String>> WithName(List<Map<String, String>> CSV, String name) {
-        // With a specified name "name"
+        // With a specified name "name" (filtrer avec un nom <Name>)
         return CSV.stream()
-                .filter(dico -> dico.get("Nom").contains(name))
+                .filter(dico -> dico.get(Builder.Header.Nom.getValue()).contains(name))
+                // pour chaque Map<String, String> dico de List<Map<String, String>> CSV, si la valeur associé a la clé "Nom" contient le <Name> que je recherche, il le met de coté
                 .collect(Collectors.toList());
+                // Collecte tout les Map<String, String> dico qui remplissent la condition de filtrage pour créer une nouvelle liste.
+
+
+        /*
+        List<Map<String, String>> newCSV = new ArrayList<>();
+        foreach (dico in CSV){
+            if(dico.get("Nom").contains(name)){
+                newCSV.add(dico)
+            }
+        }
+
+        return newCSV;
+        */
     }
 
     public static List<Map<String, String>> AtRegion(List<Map<String, String>> CSV, String region){
@@ -50,16 +62,21 @@ public class Filters {
         int[] Max = SplitDate(yearMax);
 
         List<Map<String, String>> data = new ArrayList<>();
+
         for (Map<String, String> Sis: CSV) {
             if (BtwDate(Min, Max, Sis.get(Builder.Header.Date.getValue()))){
                 data.add(Sis);
             }
         }
+
         return data;
 
     }
 
     public static List<Map<String, String>> AtTime(List<Map<String, String>> CSV, String[] Time){
+
+        if (Time[0] == null) { return CSV; }
+        if (Time[1] == null ) { Time[2] = null; }
 
         List<Map<String, String>> data = new ArrayList<>();
 
@@ -96,18 +113,17 @@ public class Filters {
     }
 
 
-
     private static boolean BtwDate(int[] Min, int[] Max, String year){
         int[] actual = SplitDate(year);
 
         for (int i = 0; i < actual.length; i++){
-            if (Min[i] > actual[i] || actual[i] > Max[i]){
-                return false;
+            if (Min[i] <= actual[i] && actual[i] < Max[i]){
+                return true;
             }
         }
-        return true;
-    }
 
+        return false;
+    }
     private static int[] SplitDate(String v1){
         String[] p1 = v1.split("/");
         int[] p2 = new int[p1.length];
@@ -116,7 +132,6 @@ public class Filters {
         }
         return p2;
     }
-
 
     private static boolean equalsTime(String[] Time, String dataTime){
         String[] cpTime = SplitTime(dataTime);

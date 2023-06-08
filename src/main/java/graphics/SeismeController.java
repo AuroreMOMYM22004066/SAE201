@@ -16,9 +16,7 @@ import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static graphics.GluonMapExample.*;
 import static datahandling.Builder.*;
@@ -48,15 +46,14 @@ public class SeismeController {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
 
         build();
-
-        setFormatters();
+        setFormattersListeners();
 
         mapContainer.getChildren().add(mapRoot);
         createBindings();
     }
 
     /*     Set Formatter & Listener on TextFields     */
-    private void setFormatters() {
+    private void setFormattersListeners() {
 
         // Add Listener on TextField
         FilterName.textProperty().addListener((observable, oldValue, newValue) -> { NameChanger(); });
@@ -71,7 +68,7 @@ public class SeismeController {
             }
 
             HourChanger();
-        });
+        });   // limit value : [0, 23]
         Min.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 int value = Integer.parseInt(newValue);
@@ -82,7 +79,7 @@ public class SeismeController {
             }
 
             MinutesChanger();
-        });
+        }); // limit value : [0, 59]
         Sec.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 int value = Integer.parseInt(newValue);
@@ -92,7 +89,7 @@ public class SeismeController {
                 }
             }
             SecondsChanger();
-        });
+        }); // limit value : [0, 59]
 
         latitude.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue < -90 || newValue > 90) {
@@ -100,7 +97,7 @@ public class SeismeController {
             }
 
             LatitudeChanger();
-        });
+        });  // limit value : [-90, 90]
         longitude.valueProperty().addListener((observable, oldValue, newValue) -> {
 
             if (newValue < -180 || newValue > 180) {
@@ -108,26 +105,30 @@ public class SeismeController {
             }
 
             LongitudeChanger();
+        }); // limit value : [-180, 180]
+
+        DateFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
+            DateFromChanger();
         });
+        DateTo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            DateToChanger();
+        });
+
+        // Apply Formatter : int
+        TextFormatter<String> hFormatter = createFormatter();
+        H.setTextFormatter(hFormatter);
+
+        TextFormatter<String> minFormatter = createFormatter();
+        Min.setTextFormatter(minFormatter);
+
+        TextFormatter<String> secFormatter = createFormatter();
+        Sec.setTextFormatter(secFormatter);
 
         TextFormatter<String> latFormatter = createFormatter();
         latitude.getEditor().setTextFormatter(latFormatter);
 
         TextFormatter<String> lonFormatter = createFormatter();
         latitude.getEditor().setTextFormatter(lonFormatter);
-
-
-        // Apply Formatter : int ∈ [0, 23]
-        TextFormatter<String> hFormatter = createFormatter();
-        H.setTextFormatter(hFormatter);
-
-        // Apply Formatter : int ∈ [0, 59]
-        TextFormatter<String> minFormatter = createFormatter();
-        Min.setTextFormatter(minFormatter);
-
-        // Apply Formatter : int ∈ [0, 59]
-        TextFormatter<String> secFormatter = createFormatter();
-        Sec.setTextFormatter(secFormatter);
     }
     private TextFormatter<String> createFormatter() {
         TextFormatter<String> formatter = new TextFormatter<>(change -> {
@@ -243,27 +244,21 @@ public class SeismeController {
 
 
     /*     Set filters changes     */
-    @FXML
-    private TextField FilterName;
-    @FXML
-    private void NameChanger(){
+    @FXML private TextField FilterName;
+    @FXML private void NameChanger(){
         Name = FilterName.getText();
         if (Objects.equals(Name, "")) Name = null;
     }
 
 
-    @FXML
-    private ComboBox<String> comboBoxDep;
-    @FXML
-    private void DepartmentChanger() {
-        Departement = comboBoxDep.getValue().split(" ")[0];
-        if (Objects.equals(Departement, "France")) Departement = null;
+    @FXML private ComboBox<String> comboBoxDep;
+    @FXML private void DepartmentChanger() {
+        Departement = comboBoxDep.getValue();
+        if (Objects.equals(Departement, "TOUS")) Departement = null;
     }
 
-    @FXML
-    private Spinner<Integer> latitude;
-    @FXML
-    private Spinner<Integer> longitude;
+    @FXML private Spinner<Integer> latitude;
+    @FXML private Spinner<Integer> longitude;
     private void LatitudeChanger(){
         Lat = latitude.getValue();
     }
@@ -272,56 +267,42 @@ public class SeismeController {
     }
 
 
-    @FXML
-    private DatePicker DateFrom;
-    @FXML
-    private DatePicker DateTo;
-    @FXML
-    private void DateFromChanger(){
-        System.out.println(Dates[0]);
-
-        String[] dts = String.valueOf(DateFrom.getValue()).split("-");
-        if (dts.length == 3){
-            Dates[0] = dts[2] + "/" + dts[1] + "/" + dts[0];
+    @FXML private DatePicker DateFrom;
+    @FXML private DatePicker DateTo;
+    @FXML private void DateFromChanger(){
+        String dts = String.valueOf(DateFrom.getValue()).replace("-", "/");
+        if (dts.split("/").length == 3){
+            Dates[0] = dts;
         } else {
             Dates[0] = null;
         }
     }
-    @FXML
-    private void DateToChanger(){
-        String[] dts = String.valueOf(DateTo.getValue()).split("-");
-        if (dts.length == 3){
-            Dates[1] = dts[2] + "/" + dts[1] + "/" + dts[0];
+    @FXML private void DateToChanger(){
+        String dts = String.valueOf(DateTo.getValue()).replace("-", "/");
+        if (dts.split("/").length == 3){
+            Dates[1] = dts;
         } else {
             Dates[1] = null;
         }
     }
 
 
-    @FXML
-    private TextField H;
-    @FXML
-    private TextField Min;
-    @FXML
-    private TextField Sec;
-    @FXML
-    private void HourChanger(){
+    @FXML private TextField H;
+    @FXML private TextField Min;
+    @FXML private TextField Sec;
+    @FXML private void HourChanger(){
         Time[0] = H.getText();
     }
-    @FXML
-    private void MinutesChanger(){
+    @FXML private void MinutesChanger(){
         Time[1] = Min.getText();
     }
-    @FXML
-    private void SecondsChanger(){
+    @FXML private void SecondsChanger(){
         Time[2] = Sec.getText();
     }
 
 
-    @FXML
-    private ComboBox<String> comboBoxChoc;
-    @FXML
-    private void ChocChanger() {
+    @FXML private ComboBox<String> comboBoxChoc;
+    @FXML private void ChocChanger() {
         Choc = comboBoxChoc.getValue();
         if (Objects.equals(Choc, "N/A")) Choc = "";
         if (Objects.equals(Choc, "TOUS")) Choc = null;
@@ -333,20 +314,24 @@ public class SeismeController {
 
 
     /*     Reserch button     */
-    @FXML
-    private void AapplyFilters() {
-        //UpdateData();
+    @FXML private void AapplyFilters() {
+        UpdateData();
         removeMarkers();
         UpdateMapPoints();
     }
 
     private void UpdateData(){
+
+        data = AllData;
+
+        System.out.println(Dates[0] + "-" +  Dates[1]);
+
         if (Name != null){ data = Filters.WithName(data, Name); }
         if (Departement != null) { data = Filters.AtRegion(data, Departement); }
-        // TODO : Add checker for Times h is null or min is null or sec is null;
+        if (Time[0] != null) { data = Filters.AtTime(data, Time); }
         // TODO : vérifier si on recherche avec les coordonnées.
-        // TODO : reaire avec les dates
-        // TODO : faire avec le temps
+        if (Dates[0] != null && Dates[1] != null) { data = Filters.BetweenDate(data, Dates[0], Dates[1]); }
+        else if (Dates[0] != null) { data = Filters.AtDate(data, Dates[0]); }
         if (Choc != null) { data = Filters.WithChoc(data, Choc); }
         // TODO : Intensity
 
