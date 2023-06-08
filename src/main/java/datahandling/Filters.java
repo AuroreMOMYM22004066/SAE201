@@ -134,21 +134,22 @@ public class Filters {
     }
 
     private static boolean equalsTime(String[] Time, String dataTime){
+
+        if (Objects.equals(dataTime, "") || Objects.equals(dataTime, null)){ return false; }
+
         String[] cpTime = SplitTime(dataTime);
 
-        if (cpTime.length < Time.length){
-            return false;
-        }
+        int min = Math.min(Time.length, cpTime.length);
 
-        for (int i = 0; i < Time.length; i++) {
-            if (Time[i] != cpTime[i]) {
+        for (int i = 0; i < min; i++) {
+            if (Time[i] != null && Integer.parseInt(Time[i]) != Integer.parseInt(cpTime[i])) {
                 return false;
             }
         }
-
         return true;
     }
     private static String[] SplitTime(String v1){
+
         String[] p1 = v1.split(" ");
 
         String[] p2 = new String[p1.length / 2];

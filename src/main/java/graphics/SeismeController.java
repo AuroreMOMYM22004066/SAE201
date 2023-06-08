@@ -324,8 +324,6 @@ public class SeismeController {
 
         data = AllData;
 
-        System.out.println(Dates[0] + "-" +  Dates[1]);
-
         if (Name != null){ data = Filters.WithName(data, Name); }
         if (Departement != null) { data = Filters.AtRegion(data, Departement); }
         if (Time[0] != null) { data = Filters.AtTime(data, Time); }
