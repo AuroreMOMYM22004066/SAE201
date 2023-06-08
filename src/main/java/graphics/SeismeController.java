@@ -2,6 +2,7 @@ package graphics;
 
 import com.gluonhq.maps.MapPoint;
 import datahandling.Builder;
+import datahandling.Filters;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,12 +16,12 @@ import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import static graphics.GluonMapExample.*;
+import static datahandling.Builder.*;
 
 public class SeismeController {
 
@@ -46,19 +47,20 @@ public class SeismeController {
     public void initializeMainPage(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
 
-        setTextFieldFormatters();
+        build();
 
-        Builder.build();
+        setFormatters();
 
         mapContainer.getChildren().add(mapRoot);
         createBindings();
     }
 
     /*     Set Formatter & Listener on TextFields     */
-    private void setTextFieldFormatters() {
+    private void setFormatters() {
 
         // Add Listener on TextField
         FilterName.textProperty().addListener((observable, oldValue, newValue) -> { NameChanger(); });
+
         H.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 int value = Integer.parseInt(newValue);
@@ -92,19 +94,42 @@ public class SeismeController {
             SecondsChanger();
         });
 
+        latitude.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue < -90 || newValue > 90) {
+                latitude.getValueFactory().setValue(oldValue);
+            }
+
+            LatitudeChanger();
+        });
+        longitude.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue < -180 || newValue > 180) {
+                longitude.getValueFactory().setValue(oldValue);
+            }
+
+            LongitudeChanger();
+        });
+
+        TextFormatter<String> latFormatter = createFormatter();
+        latitude.getEditor().setTextFormatter(latFormatter);
+
+        TextFormatter<String> lonFormatter = createFormatter();
+        latitude.getEditor().setTextFormatter(lonFormatter);
+
+
         // Apply Formatter : int ∈ [0, 23]
-        TextFormatter<String> hFormatter = createIntegerTextFormatter();
+        TextFormatter<String> hFormatter = createFormatter();
         H.setTextFormatter(hFormatter);
 
         // Apply Formatter : int ∈ [0, 59]
-        TextFormatter<String> minFormatter = createIntegerTextFormatter();
+        TextFormatter<String> minFormatter = createFormatter();
         Min.setTextFormatter(minFormatter);
 
         // Apply Formatter : int ∈ [0, 59]
-        TextFormatter<String> secFormatter = createIntegerTextFormatter();
+        TextFormatter<String> secFormatter = createFormatter();
         Sec.setTextFormatter(secFormatter);
     }
-    private TextFormatter<String> createIntegerTextFormatter() {
+    private TextFormatter<String> createFormatter() {
         TextFormatter<String> formatter = new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -207,9 +232,9 @@ public class SeismeController {
 
     /*     Filters Values     */
     private String Name;
-    private String DepartementSelected;
-    private String Lat;
-    private String Lon;
+    private String Departement;
+    private int Lat;
+    private int Lon;
     private String[] Dates = new String[2];
     private String[] Time  = new String[3];
     private String Choc;
@@ -231,17 +256,26 @@ public class SeismeController {
     private ComboBox<String> comboBoxDep;
     @FXML
     private void DepartmentChanger() {
-        DepartementSelected = comboBoxDep.getValue().split(" ")[0];
-        if (Objects.equals(DepartementSelected, "pays")) DepartementSelected = null;
+        Departement = comboBoxDep.getValue().split(" ")[0];
+        if (Objects.equals(Departement, "France")) Departement = null;
     }
 
-
-    // lat
-    // lon
+    @FXML
+    private Spinner<Integer> latitude;
+    @FXML
+    private Spinner<Integer> longitude;
+    private void LatitudeChanger(){
+        Lat = latitude.getValue();
+    }
+    private void LongitudeChanger(){
+        Lon = longitude.getValue();
+    }
 
 
     @FXML
     private DatePicker DateFrom;
+    @FXML
+    private DatePicker DateTo;
     @FXML
     private void DateFromChanger(){
         System.out.println(Dates[0]);
@@ -253,9 +287,6 @@ public class SeismeController {
             Dates[0] = null;
         }
     }
-
-    @FXML
-    private DatePicker DateTo;
     @FXML
     private void DateToChanger(){
         String[] dts = String.valueOf(DateTo.getValue()).split("-");
@@ -270,24 +301,21 @@ public class SeismeController {
     @FXML
     private TextField H;
     @FXML
+    private TextField Min;
+    @FXML
+    private TextField Sec;
+    @FXML
     private void HourChanger(){
         Time[0] = H.getText();
     }
-
-    @FXML
-    private TextField Min;
     @FXML
     private void MinutesChanger(){
         Time[1] = Min.getText();
     }
-
-    @FXML
-    private TextField Sec;
     @FXML
     private void SecondsChanger(){
         Time[2] = Sec.getText();
     }
-
 
 
     @FXML
@@ -300,26 +328,33 @@ public class SeismeController {
     }
 
 
+    // TODO : Intensity
+
+
 
     /*     Reserch button     */
     @FXML
     private void AapplyFilters() {
-        // TODO : Set filters here
-
-        UpdateData();
+        //UpdateData();
         removeMarkers();
         UpdateMapPoints();
     }
 
     private void UpdateData(){
+        if (Name != null){ data = Filters.WithName(data, Name); }
+        if (Departement != null) { data = Filters.AtRegion(data, Departement); }
         // TODO : Add checker for Times h is null or min is null or sec is null;
+        // TODO : vérifier si on recherche avec les coordonnées.
+        // TODO : reaire avec les dates
+        // TODO : faire avec le temps
+        if (Choc != null) { data = Filters.WithChoc(data, Choc); }
+        // TODO : Intensity
+
     }
 
 
     // Update Map
     private  void UpdateMapPoints() {
-        mapView.flyTo(0, new MapPoint(46.227638, 2.213749), 0.1);
-
-        GluonMapExample.addMarker(Builder.data);
+        addMarker(Builder.data);
     }
 }

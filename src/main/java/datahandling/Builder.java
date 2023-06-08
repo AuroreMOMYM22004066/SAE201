@@ -7,18 +7,6 @@ import java.util.Map;
 
 public class Builder {
 
-    public enum Filter{
-        // Will be use in dropdown & select filter
-        WithIdentifier,
-        WithName,
-        WithChoc,
-        WithQIE,
-        AtDate,
-        BetweenDate,
-        AtRegion,
-        AtPointRGF,
-        AtPointWGS
-    }
     public enum Header{
         Identifiant("Identifiant"),
         Date("Date (AAAA/MM/JJ)"),

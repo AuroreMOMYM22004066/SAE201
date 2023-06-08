@@ -5,12 +5,11 @@ import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
-
-import datahandling.Builder;
 import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
+import datahandling.Builder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,37 +25,45 @@ public class GluonMapExample {
     VBox root = new VBox();
     mapView = new MapView();
 
+    /* Set properties */
     System.setProperty("javafx.platform", "desktop");
     System.setProperty("http.agent", "Gluon Mobile/1.0.3");
 
-    MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
-    mapView.setZoom(5);
+    /* Set zoom */
+    mapView.setZoom(5.5);
 
-    mapView.flyTo(0, mapPoint, 0.1);
+    /* Set center position */
+    mapView.flyTo(0, new MapPoint(46.727638, 2.213749), 0.1);
 
+    /* resize the map (fxml) */
     mapView.setMinSize(500, 500);
     mapView.setMaxSize(500, 500);
 
+    /* add the map to the scene */
     root.getChildren().add(mapView);
 
+    /* return the new scene */
     return root;
   }
 
   public static void addMarker(List<Map<String, String>> data) {
 
     for (Map<String, String> line: data ) {
-      double latitude  = Double.parseDouble(line.get(Builder.Header.Latitude_WGS84.getValue()));
-      double longitude = Double.parseDouble(line.get(Builder.Header.Longitude_WGS84.getValue()));
+      if (line.get(Builder.Header.Latitude_WGS84.getValue()) != "" && line.get(Builder.Header.Longitude_WGS84.getValue()) != "")
+      {
+        double latitude  = Double.parseDouble(line.get(Builder.Header.Latitude_WGS84.getValue()));
+        double longitude = Double.parseDouble(line.get(Builder.Header.Longitude_WGS84.getValue()));
 
-      MapPoint mapPoint = new MapPoint(latitude, longitude);
-      MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
-      mapView.addLayer(mapLayer);
-      mapLayers.add(mapLayer);
+
+
+        MapPoint mapPoint = new MapPoint(latitude, longitude);
+        MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
+        mapView.addLayer(mapLayer);
+        mapLayers.add(mapLayer);
+      }
     }
-
     refresh();
   }
-
 
   private static void refresh(){
     MapPoint currentCenter = mapView.getCenter();
@@ -64,7 +71,7 @@ public class GluonMapExample {
     double longitude = currentCenter.getLongitude();
 
     double dep = 0.0000000000001;
-    MapPoint newCenter = new MapPoint(latitude + dep, longitude - dep);
+    MapPoint newCenter = new MapPoint(latitude + dep, longitude + dep);
 
     // Déplacement de la carte vers les nouvelles coordonnées
     mapView.flyTo(0, newCenter, 0.1);
@@ -75,7 +82,5 @@ public class GluonMapExample {
       mapView.removeLayer(mapLayer);
     }
   }
-
-
 }
 

@@ -26,6 +26,7 @@ public class CSVController {
         File f = new File("src/main/resources/CSV/" + path);
         return f.getPath();
     }
+
     private static void OpenCsv(String path) throws IOException {
         // Get the contents of the CSV file
 
@@ -41,7 +42,8 @@ public class CSVController {
     private static List<String> ParserLine(int index){
         // Pars the given line
         List<String> line = new ArrayList<>();
-        String[] data = Content.get(index).split(",");
+        String ligne = RemoveComaInQuotes(Content.get(index));
+        String[] data = ligne.split(",");
 
         for (String datum : data) {
             line.add(datum.replace("\"", ""));
@@ -74,4 +76,20 @@ public class CSVController {
         return Data;
     }
 
+    private static String RemoveComaInQuotes(String line){
+        boolean add = true;
+        String newline = "";
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == '\"'){
+                add = !add;
+            }
+
+            if (add){
+                newline += line.charAt(i);
+            } else if (line.charAt(i) != ',') {
+                newline += line.charAt(i);
+            }
+        }
+        return newline;
+    }
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.control.Spinner?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1030" minHeight="600">
     <top>
@@ -45,7 +45,7 @@
                 <ComboBox fx:id="comboBoxDep" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Départements" onAction="#DepartmentChanger">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="pays"/>
+                            <String fx:value="France"/>
                             <String fx:value="Ain (01)"/>
                             <String fx:value="Aisne (02)"/>
                             <String fx:value="Allier (03)"/>
@@ -148,11 +148,11 @@
 
                 <!--     Latitude     -->
                 <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
+                <Spinner fx:id="latitude"  editable="true" min="-90"  max="90"  GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
 
                 <!--     Longitude     -->
                 <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="lon" />
+                <Spinner fx:id="longitude" editable="true" min="-180" max="180"  GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="lon"/>
 
                 <!--     Date     -->
                 <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
