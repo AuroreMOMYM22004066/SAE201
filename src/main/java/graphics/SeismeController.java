@@ -2,7 +2,6 @@ package graphics;
 
 import com.gluonhq.maps.MapPoint;
 import datahandling.Builder;
-import datahandling.Filters;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +15,12 @@ import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
-import static graphics.GluonMapExample.mapView;
+import static graphics.GluonMapExample.*;
 
 public class SeismeController {
 
@@ -33,8 +33,7 @@ public class SeismeController {
     @FXML
     private TextField textSlider;
 
-    @FXML
-    private ComboBox<String> comboBox;
+
 
     @FXML
     private MenuBar menuBar;
@@ -42,18 +41,82 @@ public class SeismeController {
     @FXML
     private TableView<Map<String, String>> tableView;
 
-    @FXML
-    private String DepartementSelected;
 
-    // Shows the map in the fxml window
+    // Initialize the main page
     public void initializeMainPage(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
+
+        setTextFieldFormatters();
 
         Builder.build();
 
         mapContainer.getChildren().add(mapRoot);
         createBindings();
     }
+
+    /*     Set Formatter & Listener on TextFields     */
+    private void setTextFieldFormatters() {
+
+        // Add Listener on TextField
+        FilterName.textProperty().addListener((observable, oldValue, newValue) -> { NameChanger(); });
+        H.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty()) {
+                int value = Integer.parseInt(newValue);
+
+                if (value < 0 || value > 23) {
+                    H.setText(oldValue);
+                }
+            }
+
+            HourChanger();
+        });
+        Min.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty()) {
+                int value = Integer.parseInt(newValue);
+
+                if (value < 0 || value > 59) {
+                    Min.setText(oldValue);
+                }
+            }
+
+            MinutesChanger();
+        });
+        Sec.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty()) {
+                int value = Integer.parseInt(newValue);
+
+                if (value < 0 || value > 59) {
+                    Sec.setText(oldValue);
+                }
+            }
+            SecondsChanger();
+        });
+
+        // Apply Formatter : int ∈ [0, 23]
+        TextFormatter<String> hFormatter = createIntegerTextFormatter();
+        H.setTextFormatter(hFormatter);
+
+        // Apply Formatter : int ∈ [0, 59]
+        TextFormatter<String> minFormatter = createIntegerTextFormatter();
+        Min.setTextFormatter(minFormatter);
+
+        // Apply Formatter : int ∈ [0, 59]
+        TextFormatter<String> secFormatter = createIntegerTextFormatter();
+        Sec.setTextFormatter(secFormatter);
+    }
+    private TextFormatter<String> createIntegerTextFormatter() {
+        TextFormatter<String> formatter = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+
+            return null;
+        });
+        return formatter;
+    }
+
 
     public void createBindings() {
         DoubleProperty doubleMacrosismique = slider.valueProperty();
@@ -62,15 +125,9 @@ public class SeismeController {
         textSlider.textProperty().bindBidirectional(doubleMacrosismique, converter);
     }
 
-    @FXML
-    // Choose Department
-    private void onComboBoxSelectionChanger() {
-        String DepartementSelected = comboBox.getValue().split(" ")[0];
-        System.out.println("Departement choisi : " + DepartementSelected);
-    }
 
+    /*     Switch page     */
     @FXML
-    // GOTO page 1
     private void chargerPage1(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController.fxml"));
         Parent page = fxmlLoader.load();
@@ -83,7 +140,6 @@ public class SeismeController {
         scene.setRoot(page);
     }
     @FXML
-    // GOTO page 2
     private void chargerPage2(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController2.fxml"));
         Parent page = fxmlLoader.load();
@@ -95,7 +151,6 @@ public class SeismeController {
         scene.setRoot(page);
     }
     @FXML
-    // GOTO page 3
     private void chargerPage3(ActionEvent event) throws IOException {
         Parent page = FXMLLoader.load(getClass().getResource("SeismeController3.fxml"));
 
@@ -103,7 +158,8 @@ public class SeismeController {
         scene.setRoot(page);
     }
 
-    // Display the data in the TableView
+
+    /*     Display data TableView     */
     public void setTableView(List<Map<String, String>> data) throws IOException {
         // Display the content of the data in the TableView
 
@@ -148,17 +204,122 @@ public class SeismeController {
 
     }
 
-    private  void UpdateMapPoints() {
-        mapView.flyTo(0, new MapPoint(46.227638, 2.213749), 0.1);
 
-        GluonMapExample.addMarker(Builder.data);
+    /*     Filters Values     */
+    private String Name;
+    private String DepartementSelected;
+    private String Lat;
+    private String Lon;
+    private String[] Dates = new String[2];
+    private String[] Time  = new String[3];
+    private String Choc;
+    private String Intensity;
+
+
+
+    /*     Set filters changes     */
+    @FXML
+    private TextField FilterName;
+    @FXML
+    private void NameChanger(){
+        Name = FilterName.getText();
+        if (Objects.equals(Name, "")) Name = null;
     }
 
 
     @FXML
+    private ComboBox<String> comboBoxDep;
+    @FXML
+    private void DepartmentChanger() {
+        DepartementSelected = comboBoxDep.getValue().split(" ")[0];
+        if (Objects.equals(DepartementSelected, "pays")) DepartementSelected = null;
+    }
+
+
+    // lat
+    // lon
+
+
+    @FXML
+    private DatePicker DateFrom;
+    @FXML
+    private void DateFromChanger(){
+        System.out.println(Dates[0]);
+
+        String[] dts = String.valueOf(DateFrom.getValue()).split("-");
+        if (dts.length == 3){
+            Dates[0] = dts[2] + "/" + dts[1] + "/" + dts[0];
+        } else {
+            Dates[0] = null;
+        }
+    }
+
+    @FXML
+    private DatePicker DateTo;
+    @FXML
+    private void DateToChanger(){
+        String[] dts = String.valueOf(DateTo.getValue()).split("-");
+        if (dts.length == 3){
+            Dates[1] = dts[2] + "/" + dts[1] + "/" + dts[0];
+        } else {
+            Dates[1] = null;
+        }
+    }
+
+
+    @FXML
+    private TextField H;
+    @FXML
+    private void HourChanger(){
+        Time[0] = H.getText();
+    }
+
+    @FXML
+    private TextField Min;
+    @FXML
+    private void MinutesChanger(){
+        Time[1] = Min.getText();
+    }
+
+    @FXML
+    private TextField Sec;
+    @FXML
+    private void SecondsChanger(){
+        Time[2] = Sec.getText();
+    }
+
+
+
+    @FXML
+    private ComboBox<String> comboBoxChoc;
+    @FXML
+    private void ChocChanger() {
+        Choc = comboBoxChoc.getValue();
+        if (Objects.equals(Choc, "N/A")) Choc = "";
+        if (Objects.equals(Choc, "TOUS")) Choc = null;
+    }
+
+
+
+    /*     Reserch button     */
+    @FXML
     private void AapplyFilters() {
         // TODO : Set filters here
 
+        UpdateData();
+        removeMarkers();
         UpdateMapPoints();
+    }
+
+    private void UpdateData(){
+        // TODO : Add checker for Times h is null or min is null or sec is null;
+    }
+
+
+    // Update Map
+    private  void UpdateMapPoints() {
+        mapView.flyTo(0, new MapPoint(46.227638, 2.213749), 0.1);
+
+        GluonMapExample.addMarker(Builder.data);
     }
 }

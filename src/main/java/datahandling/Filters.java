@@ -15,12 +15,14 @@ public class Filters {
                 .filter(dico -> dico.get("Identifiant").contains(identifier))
                 .collect(Collectors.toList());
     }
+
     public static List<Map<String, String>> WithName(List<Map<String, String>> CSV, String name) {
         // With a specified name "name"
         return CSV.stream()
                 .filter(dico -> dico.get("Nom").contains(name))
                 .collect(Collectors.toList());
     }
+
     public static List<Map<String, String>> AtPointRGF(List<Map<String, String>> CSV, int X, int Y, int range){
         List<Map<String, String>> data = new ArrayList<>();
 
@@ -36,6 +38,7 @@ public class Filters {
 
         return data;
     }
+
     public static List<Map<String, String>> AtPointWGS(List<Map<String, String>> CSV, int X, int Y, int range){
         List<Map<String, String>> data = new ArrayList<>();
 
@@ -50,15 +53,18 @@ public class Filters {
         }
         return data;
     }
+
+    // TODO : faire le filtre avec AAAA/MM/JJ
     public static List<Map<String, String>> AtDate(List<Map<String, String>> CSV, String year) {
         // At a specified Date "year"
         return CSV.stream()
                 .filter(dico -> dico.get("Date (AAAA/MM/JJ)").contains(year))
                 .collect(Collectors.toList());
     }
+
+    // TODO : faire le filtre avec AAAA/MM/JJ
     public static List<Map<String, String>> BetweenDate(List<Map<String, String>> CSV, int yearMin, int yearMax){
         // Between two specified Dates "yearMin" & "yearMax"
-        // TODO : faire le filtre avec AAAA/MM/JJ
         if (yearMax < yearMin){ int tmp = yearMin; yearMin = yearMax; yearMax = tmp; }
 
         List<Map<String, String>> data = new ArrayList<>();
@@ -71,22 +77,26 @@ public class Filters {
         return data;
 
     }
+
     public static List<Map<String, String>> AtRegion(List<Map<String, String>> CSV, String region){
         // At a specified region "region"
         return CSV.stream()
                 .filter(dico -> dico.get("Région épicentrale").contains(region))
                 .collect(Collectors.toList());
     }
+
     public static List<Map<String, String>> WithQIE(List<Map<String, String>> CSV, String QIE){
         // At a specified QIE "Qualité intensité épicentrale"
         return CSV.stream()
                 .filter(dico -> Objects.equals(dico.get("Qualité intensité épicentrale"), QIE))
                 .collect(Collectors.toList());
     }
+
     public static List<Map<String, String>> WithChoc(List<Map<String, String>> CSV, String Choc){
         // At a specified choc "Choc"
         return CSV.stream()
                 .filter(dico -> Objects.equals(dico.get("Choc"), Choc))
                 .collect(Collectors.toList());
     }
+
 }

@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.SpinnerValueFactory?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1030" minHeight="600">
     <top>
@@ -34,11 +35,14 @@
         <VBox>
             <Label text="    (tous les champs sont facultatif)"/>
             <GridPane styleClass="gridPane">
-                <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
+                <!--     Name     -->
+                <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="FilterName" GridPane.columnIndex="1" GridPane.rowIndex="0" onAction="#NameChanger"/>
+
+                <!--     Departement     -->
                 <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <ComboBox fx:id="comboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Départements" onAction="#onComboBoxSelectionChanger">
+                <ComboBox fx:id="comboBoxDep" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Départements" onAction="#DepartmentChanger">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="pays"/>
@@ -142,44 +146,50 @@
                     </items>
                 </ComboBox>
 
+                <!--     Latitude     -->
                 <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="vide" ></Spinner>
+                <Spinner fx:id="latitude" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
 
+                <!--     Longitude     -->
                 <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="vide" ></Spinner>
+                <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="lon" />
 
+                <!--     Date     -->
                 <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
                 <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <HBox GridPane.columnIndex="0" GridPane.rowIndex="5">
                         <Label styleClass="textPage1" text="de"/>
-                        <DatePicker promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;"/>
+                        <DatePicker fx:id="DateFrom" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateFromChanger"/>
                     </HBox>
                     <HBox GridPane.columnIndex="2" GridPane.rowIndex="5">
                         <Label styleClass="textPage1" text="à"/>
-                        <DatePicker promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;"/>
+                        <DatePicker fx:id="DateTo"   promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateToChanger"/>
                     </HBox>
                 </GridPane>
 
+                <!--     Time     -->
                 <Label styleClass="textPage1" text="Heure : " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
                 <GridPane GridPane.columnIndex="1" GridPane.rowIndex="7">
                     <HBox GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="2">
-                        <TextField style="-fx-pref-width: 40px;"/>
+                        <TextField fx:id="H" style="-fx-pref-width: 40px;" onAction="#HourChanger"/>
                         <Label styleClass="textPage1" text="h"/>
                     </HBox>
                     <HBox GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.columnSpan="2">
-                        <TextField style="-fx-pref-width: 40px;"/>
+                        <TextField fx:id="Min" style="-fx-pref-width: 40px;" onAction="#MinutesChanger"/>
                         <Label styleClass="textPage1" text="min"/>
                     </HBox>
                     <HBox GridPane.columnIndex="5" GridPane.rowIndex="7" GridPane.columnSpan="2">
-                        <TextField style="-fx-pref-width: 40px;"/>
+                        <TextField fx:id="Sec" style="-fx-pref-width: 40px;" onAction="#SecondsChanger"/>
                         <Label styleClass="textPage1" text="sec"/>
                     </HBox>
                 </GridPane>
 
+                <!--     Choc     -->
                 <Label styleClass="textPage1" text="Choc : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                <ComboBox fx:id="comboBoxChoc" GridPane.columnIndex="1" GridPane.rowIndex="9" promptText="choc">
+                <ComboBox fx:id="comboBoxChoc" GridPane.columnIndex="1" GridPane.rowIndex="9" promptText="choc"  onAction="#ChocChanger" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="TOUS"/>
                             <String fx:value="SECOUSSE INDIVIDUALISEE D UN ESSAIM"/>
                             <String fx:value="GROUPE DE SECOUSSES D UN ESSAIM"/>
                             <String fx:value="REPLIQUE"/>
@@ -189,9 +199,12 @@
                     </items>
                 </ComboBox>
 
+                <!--     Intensity     -->
                 <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="10"/>
                 <TextField fx:id="textSlider" GridPane.columnIndex="1" GridPane.rowIndex="10"></TextField>
                 <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3"/>
+
+                <!--     Recherche Button     -->
                 <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="3" >
                     <Button fx:id="rechercheButton" text="Recherche" onAction="#AapplyFilters"/>
                 </HBox>
