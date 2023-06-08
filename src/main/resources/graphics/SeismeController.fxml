@@ -143,9 +143,8 @@
                             <String fx:value="TOUS"/>
                             <String fx:value="SECOUSSE INDIVIDUALISEE D UN ESSAIM"/>
                             <String fx:value="GROUPE DE SECOUSSES D UN ESSAIM"/>
-                            <String fx:value="REPLIQUE"/>
                             <String fx:value="PRECURSEUR"/>
-                            <String fx:value="N/A"/>
+                            <String fx:value="REPLIQUE"/>
                         </FXCollections>
                     </items>
                 </ComboBox>

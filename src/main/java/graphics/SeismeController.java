@@ -324,6 +324,7 @@ public class SeismeController {
 
         data = AllData;
 
+        // TODO : Identifier (que des chiffres donc mettre le Listenner et le Formater) && ajouter bouton.
         if (Name != null){ data = Filters.WithName(data, Name); }
         if (Departement != null) { data = Filters.AtRegion(data, Departement); }
         if (Time[0] != null) { data = Filters.AtTime(data, Time); }
@@ -331,7 +332,7 @@ public class SeismeController {
         if (Dates[0] != null && Dates[1] != null) { data = Filters.BetweenDate(data, Dates[0], Dates[1]); }
         else if (Dates[0] != null) { data = Filters.AtDate(data, Dates[0]); }
         if (Choc != null) { data = Filters.WithChoc(data, Choc); }
-        // TODO : Intensity
+        // TODO : Intensity (faire le bouton et récup les valeurs)
 
     }
 
