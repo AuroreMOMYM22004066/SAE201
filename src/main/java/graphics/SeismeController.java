@@ -51,12 +51,6 @@ public class SeismeController {
 
         Builder.build();
 
-        Builder.data = Filters.AtDate(Builder.data, "1996");
-
-        for (Map<String, String> dat: Builder.data) {
-            System.out.println(dat);
-        }
-
         mapContainer.getChildren().add(mapRoot);
         createBindings();
     }

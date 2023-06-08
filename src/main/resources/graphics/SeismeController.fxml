@@ -17,7 +17,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.DatePicker?>
 
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1000" minHeight="600">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1030" minHeight="600">
     <top>
         <HBox styleClass="hbox">
             <MenuBar fx:id="menuBar">
@@ -32,14 +32,13 @@
     </top>
     <center>
         <VBox>
-            <Label text="(tous les champs sont facultatif)"/>
-
+            <Label text="    (tous les champs sont facultatif)"/>
             <GridPane styleClass="gridPane">
                 <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
                 <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <ComboBox fx:id="comboBox" GridPane.columnIndex="0" GridPane.rowIndex="2" promptText="Départements" onAction="#onComboBoxSelectionChanger">
+                <ComboBox fx:id="comboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Départements" onAction="#onComboBoxSelectionChanger">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="pays"/>
@@ -150,34 +149,42 @@
                 <Spinner fx:id="longitude" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="vide" ></Spinner>
 
                 <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                <HBox GridPane.columnIndex="0" GridPane.rowIndex="6">
-                    <Label styleClass="textPage1" text="De"/>
-                    <DatePicker/>
-                </HBox>
-                <HBox GridPane.columnIndex="1" GridPane.rowIndex="6">
-                    <Label styleClass="textPage1" text="à"/>
-                    <DatePicker/>
-                </HBox>
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <HBox GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        <Label styleClass="textPage1" text="de"/>
+                        <DatePicker promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;"/>
+                    </HBox>
+                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="5">
+                        <Label styleClass="textPage1" text="à"/>
+                        <DatePicker promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;"/>
+                    </HBox>
+                </GridPane>
 
                 <Label styleClass="textPage1" text="Heure : " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-                <HBox GridPane.columnIndex="0" GridPane.rowIndex="8">
-                    <TextField/>
-                    <Label styleClass="textPage1" text="h"/>
-                </HBox>
-                <HBox GridPane.columnIndex="1" GridPane.rowIndex="8">
-                    <TextField/>
-                    <Label styleClass="textPage1" text="min"/>
-                </HBox>
-                <HBox GridPane.columnIndex="2" GridPane.rowIndex="8">
-                    <TextField/>
-                    <Label styleClass="textPage1" text="sec"/>
-                </HBox>
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="7">
+                    <HBox GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="2">
+                        <TextField style="-fx-pref-width: 40px;"/>
+                        <Label styleClass="textPage1" text="h"/>
+                    </HBox>
+                    <HBox GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.columnSpan="2">
+                        <TextField style="-fx-pref-width: 40px;"/>
+                        <Label styleClass="textPage1" text="min"/>
+                    </HBox>
+                    <HBox GridPane.columnIndex="5" GridPane.rowIndex="7" GridPane.columnSpan="2">
+                        <TextField style="-fx-pref-width: 40px;"/>
+                        <Label styleClass="textPage1" text="sec"/>
+                    </HBox>
+                </GridPane>
 
                 <Label styleClass="textPage1" text="Choc : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                 <ComboBox fx:id="comboBoxChoc" GridPane.columnIndex="1" GridPane.rowIndex="9" promptText="choc">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="jsp"/>
+                            <String fx:value="SECOUSSE INDIVIDUALISEE D UN ESSAIM"/>
+                            <String fx:value="GROUPE DE SECOUSSES D UN ESSAIM"/>
+                            <String fx:value="REPLIQUE"/>
+                            <String fx:value="PRECURSEUR"/>
+                            <String fx:value="N/A"/>
                         </FXCollections>
                     </items>
                 </ComboBox>
@@ -188,6 +195,7 @@
                 <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="3" >
                     <Button fx:id="rechercheButton" text="Recherche" onAction="#AapplyFilters"/>
                 </HBox>
+
             </GridPane>
         </VBox>
     </center>
