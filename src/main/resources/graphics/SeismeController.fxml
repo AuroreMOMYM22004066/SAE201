@@ -40,7 +40,7 @@
                 <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <TextField fx:id="FilterName" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Nom a rechercher" onAction="#NameChanger"/>
 
-                <!--     Departement     -->
+                <!--     Régions     -->
                 <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <ComboBox fx:id="comboBoxDep" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Région" onAction="#DepartmentChanger">
                     <items>

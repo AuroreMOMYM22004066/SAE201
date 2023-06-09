@@ -50,6 +50,8 @@ public class SeismeController {
 
         mapContainer.getChildren().add(mapRoot);
         createBindings();
+
+        mapView.flyTo(0, new MapPoint(46.727638, 2.213749), 0.1);
     }
 
     /*     Set Formatter & Listener on TextFields     */
