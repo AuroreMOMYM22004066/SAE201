@@ -96,7 +96,12 @@ public class Filters {
     }
 
 
-    // TODO : Intensité épicentrale
+    public static List<Map<String, String>> AtIntensity (List<Map<String, String>> CSV, String intensity) {
+        // At a specified intensity "intensité épicentrale"
+        return CSV.stream()
+                .filter(dico -> Objects.equals(dico.get("intensité épicentrale"), intensity))
+                .collect(Collectors.toList());
+    }
 
     public static List<Map<String, String>> WithQIE(List<Map<String, String>> CSV, String QIE){
         // At a specified QIE "Qualité intensité épicentrale"
@@ -160,5 +165,4 @@ public class Filters {
 
         return p2;
     }
-
 }

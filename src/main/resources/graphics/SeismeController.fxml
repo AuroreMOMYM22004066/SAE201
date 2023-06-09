@@ -33,7 +33,7 @@
     </top>
     <center>
         <VBox>
-            <Label text="    (tous les champs sont facultatif)"/>
+            <Label text="(tous les champs sont facultatif)"/>
             <GridPane styleClass="gridPane">
 
                 <!--     Name     -->
@@ -151,7 +151,7 @@
 
                 <!--     Intensity     -->
                 <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="10"/>
-                <TextField fx:id="textSlider" GridPane.columnIndex="1" GridPane.rowIndex="10"></TextField>
+                <TextField fx:id="Filterintensity" GridPane.columnIndex="1" GridPane.rowIndex="10"></TextField>
                 <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3"/>
 
                 <!--     Recherche Button     -->
@@ -165,4 +165,7 @@
     <right>
         <VBox fx:id="mapContainer" />
     </right>
+    <bottom>
+        <Button fx:id="reset" text="Vider" onAction="#ResetButton"/>
+    </bottom>
 </BorderPane>

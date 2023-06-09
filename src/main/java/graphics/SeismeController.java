@@ -30,7 +30,7 @@ public class SeismeController {
     @FXML
     private Slider slider;
     @FXML
-    private TextField textSlider;
+    private TextField FilterIntensity;
 
 
 
@@ -39,6 +39,9 @@ public class SeismeController {
 
     @FXML
     private TableView<Map<String, String>> tableView;
+
+    @FXML
+    private Button reset;
 
 
     // Initialize the main page
@@ -150,7 +153,7 @@ public class SeismeController {
         DoubleProperty doubleMacrosismique = slider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
 
-        textSlider.textProperty().bindBidirectional(doubleMacrosismique, converter);
+        FilterIntensity.textProperty().bindBidirectional(doubleMacrosismique, converter);
     }
 
 
@@ -311,16 +314,31 @@ public class SeismeController {
     }
 
 
-    // TODO : Intensity
+    @FXML private TextField
 
 
 
     /*     Reserch button     */
-    @FXML private void AapplyFilters() {
+    @FXML
+    private void AapplyFilters() {
         UpdateData();
         removeMarkers();
         UpdateMapPoints();
     }
+
+    @FXML
+    private void ResetButton () {
+        FilterName.setText(null);
+        comboBoxDep.setValue(null);
+        DateFrom.setValue(null);
+        DateTo.setValue(null);
+        H.setText(null);
+        Min.setText(null);
+        Sec.setText(null);
+        comboBoxChoc.setValue(null);
+        FilterIntensity.setText("2");
+    }
+
 
     private void UpdateData(){
 
@@ -334,8 +352,7 @@ public class SeismeController {
         if (Dates[0] != null && Dates[1] != null) { data = Filters.BetweenDate(data, Dates[0], Dates[1]); }
         else if (Dates[0] != null) { data = Filters.AtDate(data, Dates[0]); }
         if (Choc != null) { data = Filters.WithChoc(data, Choc); }
-        // TODO : Intensity (faire le bouton et récup les valeurs)
-
+        if (Intensity != null) { data = Filters.AtIntensity(data, Intensity); }
     }
 
 
