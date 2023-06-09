@@ -64,7 +64,7 @@ public class SeismeController {
     @FXML   private TextField FilterIntensity;
 
 
-    // Initialize the main page
+    /* Main Page Initializer */
     public void initializeMainPage(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
 
@@ -261,19 +261,16 @@ public class SeismeController {
         Name = FilterName.getText();
         if (Objects.equals(Name, "")) Name = null;
     }
-
     @FXML private void RegionChanger() {
         Region = comboBoxDep.getValue();
         if (Objects.equals(Region, "TOUS")) Region = null;
     }
-
     private void LatitudeChanger(){
         Lat = latitude.getValue();
     }
     private void LongitudeChanger(){
         Lon = longitude.getValue();
     }
-
     @FXML private void DateFromChanger(){
         String dts = String.valueOf(DateFrom.getValue()).replace("-", "/");
         if (dts.split("/").length == 3){
@@ -290,7 +287,6 @@ public class SeismeController {
             Dates[1] = null;
         }
     }
-
     @FXML private void HourChanger(){
         Time[0] = H.getText();
     }
@@ -300,7 +296,6 @@ public class SeismeController {
     @FXML private void SecondsChanger(){
         Time[2] = Sec.getText();
     }
-
     @FXML private void ChocChanger() {
         Choc = comboBoxChoc.getValue();
         if (Objects.equals(Choc, "N/A")) Choc = "";
