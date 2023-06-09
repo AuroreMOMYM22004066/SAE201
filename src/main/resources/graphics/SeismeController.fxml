@@ -42,7 +42,7 @@
 
                 <!--     Régions     -->
                 <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <ComboBox fx:id="comboBoxDep" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Région" onAction="#DepartmentChanger">
+                <ComboBox fx:id="comboBoxDep" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Région" onAction="#RegionChanger">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="TOUS"/>

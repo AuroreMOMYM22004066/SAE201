@@ -28,20 +28,40 @@ public class SeismeController {
     private VBox mapContainer;
 
     @FXML
-    private Slider slider;
-    @FXML
-    private TextField FilterIntensity;
-
-
-
-    @FXML
     private MenuBar menuBar;
 
     @FXML
     private TableView<Map<String, String>> tableView;
 
-    @FXML
-    private Button reset;
+
+
+
+
+    /*     Filters Values     */
+    private String Name;
+    private String Region;
+    private int Lat;
+    private int Lon;
+    private String[] Dates = new String[2];
+    private String[] Time  = new String[3];
+    private String Choc;
+    private String Intensity;
+
+
+
+    /*     Set filters changes     */
+    @FXML private TextField FilterName;
+    @FXML private ComboBox<String> comboBoxChoc;
+    @FXML private ComboBox<String> comboBoxDep;
+    @FXML private Spinner<Integer> latitude;
+    @FXML private Spinner<Integer> longitude;
+    @FXML private DatePicker DateFrom;
+    @FXML private DatePicker DateTo;
+    @FXML private TextField H;
+    @FXML private TextField Min;
+    @FXML private TextField Sec;
+    @FXML   private Slider slider;
+    @FXML   private TextField FilterIntensity;
 
 
     // Initialize the main page
@@ -236,34 +256,17 @@ public class SeismeController {
     }
 
 
-    /*     Filters Values     */
-    private String Name;
-    private String Departement;
-    private int Lat;
-    private int Lon;
-    private String[] Dates = new String[2];
-    private String[] Time  = new String[3];
-    private String Choc;
-    private String Intensity;
-
-
-
-    /*     Set filters changes     */
-    @FXML private TextField FilterName;
+    /*    OnAction functions     */
     @FXML private void NameChanger(){
         Name = FilterName.getText();
         if (Objects.equals(Name, "")) Name = null;
     }
 
-
-    @FXML private ComboBox<String> comboBoxDep;
-    @FXML private void DepartmentChanger() {
-        Departement = comboBoxDep.getValue();
-        if (Objects.equals(Departement, "TOUS")) Departement = null;
+    @FXML private void RegionChanger() {
+        Region = comboBoxDep.getValue();
+        if (Objects.equals(Region, "TOUS")) Region = null;
     }
 
-    @FXML private Spinner<Integer> latitude;
-    @FXML private Spinner<Integer> longitude;
     private void LatitudeChanger(){
         Lat = latitude.getValue();
     }
@@ -271,9 +274,6 @@ public class SeismeController {
         Lon = longitude.getValue();
     }
 
-
-    @FXML private DatePicker DateFrom;
-    @FXML private DatePicker DateTo;
     @FXML private void DateFromChanger(){
         String dts = String.valueOf(DateFrom.getValue()).replace("-", "/");
         if (dts.split("/").length == 3){
@@ -291,10 +291,6 @@ public class SeismeController {
         }
     }
 
-
-    @FXML private TextField H;
-    @FXML private TextField Min;
-    @FXML private TextField Sec;
     @FXML private void HourChanger(){
         Time[0] = H.getText();
     }
@@ -305,8 +301,6 @@ public class SeismeController {
         Time[2] = Sec.getText();
     }
 
-
-    @FXML private ComboBox<String> comboBoxChoc;
     @FXML private void ChocChanger() {
         Choc = comboBoxChoc.getValue();
         if (Objects.equals(Choc, "N/A")) Choc = "";
@@ -314,18 +308,8 @@ public class SeismeController {
     }
 
 
-    @FXML private TextField
 
-
-
-    /*     Reserch button     */
-    @FXML
-    private void AapplyFilters() {
-        UpdateData();
-        removeMarkers();
-        UpdateMapPoints();
-    }
-
+    /*     Reset button     */
     @FXML
     private void ResetButton () {
         FilterName.setText(null);
@@ -340,13 +324,21 @@ public class SeismeController {
     }
 
 
+    /*     Reserch button     */
+    @FXML
+    private void AapplyFilters() {
+        UpdateData();
+        removeMarkers();
+        UpdateMapPoints();
+    }
+
     private void UpdateData(){
 
         data = AllData;
 
         // TODO : Identifier (que des chiffres donc mettre le Listenner et le Formater) && ajouter bouton.
         if (Name != null){ data = Filters.WithName(data, Name); }
-        if (Departement != null) { data = Filters.AtRegion(data, Departement); }
+        if (Region != null) { data = Filters.AtRegion(data, Region); }
         if (Time[0] != null) { data = Filters.AtTime(data, Time); }
         // TODO : vérifier si on recherche avec les coordonnées.
         if (Dates[0] != null && Dates[1] != null) { data = Filters.BetweenDate(data, Dates[0], Dates[1]); }
@@ -355,8 +347,6 @@ public class SeismeController {
         if (Intensity != null) { data = Filters.AtIntensity(data, Intensity); }
     }
 
-
-    // Update Map
     private  void UpdateMapPoints() {
         addMarker(Builder.data);
     }
