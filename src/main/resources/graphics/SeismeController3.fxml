@@ -36,5 +36,9 @@
 
         </GridPane>
     </center>
+    <right>
+        <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT"/>
+    </right>
+
 
 </BorderPane>

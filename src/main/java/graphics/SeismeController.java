@@ -23,6 +23,8 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.beans.property.DoubleProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import javafx.util.StringConverter;
@@ -76,6 +78,10 @@ public class SeismeController {
     @FXML private TextField Sec;
     @FXML private Slider slider;
     @FXML private TextField FilterIntensity;
+
+
+    /*      element binding     */
+    @FXML private Button buttonMenuChoice;
 
 
     /*     Charts     */
@@ -151,6 +157,13 @@ public class SeismeController {
         SetChart1();
         SetChart2();
         SetChart3();
+
+        // ajout image button
+        Image imgButtonMenu = new Image(SeismeController.class.getResource("buttonMenu.jpg").toString());
+        ImageView viewButtonMenu = new ImageView();
+        viewButtonMenu.setImage(imgButtonMenu);
+        buttonMenuChoice.setGraphic(viewButtonMenu);
+
     }
 
 
@@ -295,6 +308,10 @@ public class SeismeController {
             return null;
         });
     }
+
+    //------------------------------------------------------------------------------------------//
+    //                                                                                          //
+    //------------------------------------------------------------------------------------------//
 
     public void createBindings() {
         DoubleProperty doubleMacrosismique = slider.valueProperty();

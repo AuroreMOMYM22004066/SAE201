@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6895a330-e6e1-481d-a1c7-14678d871591" name="Changes" comment="update: interface &amp; add: filters' components">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphics/buttonMenu.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_09_26.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_09_26.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_10_55.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_10_55.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController3.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +117,7 @@
       <workItem from="1686315267869" duration="1000" />
       <workItem from="1686324415605" duration="5704000" />
       <workItem from="1686337681665" duration="4637000" />
-      <workItem from="1686384307220" duration="7154000" />
+      <workItem from="1686384307220" duration="3659000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1685985663485</created>
