@@ -32,9 +32,6 @@ public class GluonMapExample {
     /* Set zoom */
     mapView.setZoom(5.5);
 
-    /* Set center position */
-    mapView.flyTo(0, new MapPoint(46.727638, 2.213749), 0.1);
-
     /* resize the map (fxml) */
     mapView.setMinSize(500, 500);
     mapView.setMaxSize(500, 500);
