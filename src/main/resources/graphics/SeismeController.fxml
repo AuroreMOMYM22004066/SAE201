@@ -156,7 +156,7 @@
                 <!--     Intensity     -->
                 <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                 <TextField fx:id="FilterIntensity" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-                <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
+                <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="false" majorTickUnit="2" blockIncrement="2" snapToTicks="true" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
 
                 <!--     Recherche Button     -->
                 <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3" >

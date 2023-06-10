@@ -1,23 +1,30 @@
 package graphics;
 
 import com.gluonhq.maps.MapPoint;
+
 import datahandling.Builder;
 import datahandling.Filters;
+
 import javafx.beans.property.SimpleStringProperty;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.beans.property.DoubleProperty;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
@@ -26,6 +33,7 @@ import java.util.*;
 
 import static graphics.GluonMapExample.*;
 import static datahandling.Builder.*;
+
 
 public class SeismeController {
 
@@ -451,8 +459,11 @@ public class SeismeController {
 
     private void SetChart3(){
 
-        Map<String, Integer> DateList = new HashMap<>();
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        int pas = 1;
+        // TODO : mini combobox tout les x ans;
+
+        Map<String, Integer> DateList = new TreeMap<>();
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
 
         for (Map<String, String> map : data) {
             String Date = map.get(Header.Date.getValue()).split("/")[0];
@@ -465,33 +476,38 @@ public class SeismeController {
             }
         }
 
+        String minDate = (String) DateList.keySet().toArray()[0];
+        String maxDate = (String) DateList.keySet().toArray()[DateList.size()-1];
+
+
+        int nombre = 0;
+        int pasDate = Integer.parseInt(minDate);
+
         for (String key : DateList.keySet() ) {
-            int value = DateList.get(key);
-            pieChartData.add(new PieChart.Data(key, value));
+
+            int thisDate = Integer.parseInt(key);
+            if (thisDate - pasDate < pas){
+                nombre += DateList.get(key);
+            } else {
+                series.getData().add(new XYChart.Data<>(pasDate, nombre));
+                pasDate = thisDate;
+                nombre = DateList.get(key);
+            }
         }
 
-        //System.out.println(DateList);
-
-        //System.out.println(DateList.size());
-
-        String minDate;
-        String maxDate;
-
-
-
-
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>(0, 30));
-        series.getData().add(new XYChart.Data<>(1, 10));
-        series.getData().add(new XYChart.Data<>(2, 20));
-        series.getData().add(new XYChart.Data<>(3, 15));
 
         lineChart.getData().add(series);
 
-        // Exemple : Modifier l'apparence du graphique
         lineChart.setTitle("Exemple de graphique");
-        lineChart.getXAxis().setLabel("Nombre de seismes");
-        lineChart.getYAxis().setLabel("années");
+        lineChart.getYAxis().setLabel("Nombre de seismes");
+        lineChart.getXAxis().setLabel("années");
+
+        // Personnalisation de l'axe des abscisses
+        NumberAxis xAxis = (NumberAxis) lineChart.getXAxis();
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(Integer.parseInt(minDate));
+        xAxis.setUpperBound(Integer.parseInt(maxDate));
+        xAxis.setTickUnit(20);
     }
 }
 
