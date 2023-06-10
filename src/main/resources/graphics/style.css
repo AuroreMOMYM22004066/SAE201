@@ -4,20 +4,38 @@
     -fx-background-color: #0D1321;*/
     -fx-max-width: 1000;
     -fx-font-size: 20;
+}
+
+.hboxTitre {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-background-color: #D7D7D7;
 
 }
 
 .textPage1 {
     /*-fx-text-fill: #FF8811;*/
     -fx-font-size: 14;
-    -fx-padding: 7;
+    -fx-padding: 10;
 
 }
 
 .hbox {
     -fx-padding: 10;
     -fx-spacing: 10;
-    -fx-background-color: #D7D7D7;
+}
+
+.button {
+    -fx-padding: 8;
+    -fx-spacing: 10;
+}
+
+.slider {
+    -fx-show-tick-marks: false;
+    -fx-show-tick-labels: true;
+    -fx-major-tick-unit: 2;
+    -fx-snap-to-ticks: true;
+    -fx-block-increment: 2;
 }
 
 .gridPane {

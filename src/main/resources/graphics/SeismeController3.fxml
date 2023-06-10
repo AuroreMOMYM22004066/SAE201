@@ -37,7 +37,24 @@
         </GridPane>
     </center>
     <right>
-        <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT"/>
+        <VBox>
+            <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT" style="-fx-background-color: light grey"/>
+            <Pane visible="false">
+                <VBox styleClass="hbox">
+                    <HBox>
+                        <Label styleClass="textPage1" text="Graphic 1"/>
+                        <CheckBox fx:id="checkGraph1" styleClass="checkBox"/>
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="textPage1" text="Graphic 1"/>
+                        <CheckBox fx:id="checkGraph2" styleClass="checkBox"/>
+                    </HBox><HBox>
+                        <Label styleClass="textPage1" text="Graphic 1"/>
+                        <CheckBox fx:id="checkGraph3" styleClass="checkBox"/>
+                    </HBox>
+                </VBox>
+            </Pane>
+        </VBox>
     </right>
 
 

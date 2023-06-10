@@ -20,7 +20,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1500" minHeight="800">
     <top>
-        <HBox styleClass="hbox">
+        <HBox styleClass="hboxTitre">
             <MenuBar fx:id="menuBar">
                 <Menu text="Pages">
                     <MenuItem text="Recherche" onAction="#chargerPage1"/>
@@ -116,7 +116,7 @@
                         <Label styleClass="textPage1" text="de"/>
                         <DatePicker fx:id="DateFrom" editable="true" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateFromChanger"/>
                     </HBox>
-                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="6">
+                    <HBox styleClass="hbox" GridPane.columnIndex="2" GridPane.rowIndex="6">
                         <Label styleClass="textPage1" text="à"/>
                         <DatePicker fx:id="DateTo"   editable="true" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateToChanger"/>
                     </HBox>
@@ -156,11 +156,11 @@
                 <!--     Intensity     -->
                 <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                 <TextField fx:id="FilterIntensity" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-                <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="false" majorTickUnit="2" blockIncrement="2" snapToTicks="true" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
+                <Slider fx:id="slider" styleClass="slider" min="2" max="12" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
 
                 <!--     Recherche Button     -->
-                <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3" >
-                    <Button fx:id="rechercheButton" text="Recherche" onAction="#ResearchButton"/>
+                <HBox  styleClass="hbox" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3" alignment="CENTER" >
+                    <Button fx:id="rechercheButton" styleClass="button" text="Recherche" onAction="#ResearchButton"/>
                 </HBox>
 
             </GridPane>
@@ -170,6 +170,8 @@
         <VBox fx:id="mapContainer" />
     </right>
     <bottom>
-        <Button fx:id="reset" text="Vider" onAction="#ResetButton"/>
+        <HBox styleClass="hbox" alignment="CENTER_RIGHT">
+            <Button fx:id="reset" styleClass="button" text="Vider" onAction="#ResetButton"/>
+        </HBox>
     </bottom>
 </BorderPane>

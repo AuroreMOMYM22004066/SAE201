@@ -5,6 +5,7 @@ import com.gluonhq.maps.MapPoint;
 import datahandling.Builder;
 import datahandling.Filters;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
 
 import javafx.collections.FXCollections;
@@ -313,11 +314,14 @@ public class SeismeController {
     //                                                                                          //
     //------------------------------------------------------------------------------------------//
 
+
     public void createBindings() {
         DoubleProperty doubleMacrosismique = slider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
 
         FilterIntensity.textProperty().bindBidirectional(doubleMacrosismique, converter);
+
+//        BooleanBinding accessMenu =
     }
 
     private boolean CheckIntensity(String value){
@@ -407,6 +411,8 @@ public class SeismeController {
         comboBoxChoc.setValue(null);
 
         FilterIntensity.setText("2");
+
+        removeMarkers();
     }
 
 
