@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6895a330-e6e1-481d-a1c7-14678d871591" name="Changes" comment="update: resize interface">
+    <list default="true" id="6895a330-e6e1-481d-a1c7-14678d871591" name="Changes" comment="erreur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/SeismeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/SeismeController3.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphics/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphics/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +117,7 @@
       <workItem from="1686384307220" duration="3659000" />
       <workItem from="1686403281813" duration="30000" />
       <workItem from="1686403333440" duration="1147000" />
-      <workItem from="1686405359057" duration="3655000" />
+      <workItem from="1686405359057" duration="7256000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1685985663485</created>
@@ -198,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686408932628</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="erreur">
+      <created>1686411315650</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686411315650</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +233,8 @@
     <MESSAGE value="push please" />
     <MESSAGE value="update: interface &amp; add: filters' components" />
     <MESSAGE value="update: resize interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: resize interface" />
+    <MESSAGE value="erreur" />
+    <option name="LAST_COMMIT_MESSAGE" value="erreur" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

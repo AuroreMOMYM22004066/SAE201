@@ -26,6 +26,7 @@ import javafx.scene.control.*;
 import javafx.beans.property.DoubleProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import javafx.util.StringConverter;
@@ -314,15 +315,50 @@ public class SeismeController {
     //                                                                                          //
     //------------------------------------------------------------------------------------------//
 
-
     public void createBindings() {
         DoubleProperty doubleMacrosismique = slider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
 
         FilterIntensity.textProperty().bindBidirectional(doubleMacrosismique, converter);
 
-//        BooleanBinding accessMenu =
     }
+
+    @FXML
+    private CheckBox checkBox1;
+    @FXML
+    private CheckBox checkBox2;
+    @FXML
+    private CheckBox checkBox3;
+
+    @FXML
+    private void handleCheckBoxAction() {
+        CheckBox selectedCheckBox = null;
+        if (checkBox1.isSelected()) {
+            selectedCheckBox = checkBox1;
+        }
+        else if (checkBox2.isSelected()) {
+            selectedCheckBox = checkBox2;
+        }
+        else if (checkBox3.isSelected()) {
+            selectedCheckBox = checkBox3;
+        }
+
+        if (selectedCheckBox != null) {
+            checkBox1.setSelected(selectedCheckBox.equals(checkBox1));
+            checkBox2.setSelected(selectedCheckBox.equals(checkBox2));
+            checkBox3.setSelected(selectedCheckBox.equals(checkBox3));
+        }
+    }
+
+
+    @FXML private Pane menuDash;
+    public void showMenu() {
+        if (menuDash.isVisible())
+            menuDash.setVisible(false);
+        else
+            menuDash.setVisible(true);
+    }
+
 
     private boolean CheckIntensity(String value){
         try {

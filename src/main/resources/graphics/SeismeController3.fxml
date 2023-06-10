@@ -38,20 +38,14 @@
     </center>
     <right>
         <VBox>
-            <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT" style="-fx-background-color: light grey"/>
-            <Pane visible="false">
+            <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT" style="-fx-background-color: light grey" onAction="#showMenu"/>
+            <Pane fx:id="menuDash" visible="false" style="-fx-background-color: grey" minWidth="50" minHeight="200">
                 <VBox styleClass="hbox">
-                    <HBox>
-                        <Label styleClass="textPage1" text="Graphic 1"/>
-                        <CheckBox fx:id="checkGraph1" styleClass="checkBox"/>
-                    </HBox>
-                    <HBox>
-                        <Label styleClass="textPage1" text="Graphic 1"/>
-                        <CheckBox fx:id="checkGraph2" styleClass="checkBox"/>
-                    </HBox><HBox>
-                        <Label styleClass="textPage1" text="Graphic 1"/>
-                        <CheckBox fx:id="checkGraph3" styleClass="checkBox"/>
-                    </HBox>
+                    <children>
+                        <CheckBox text="Graphic 1" fx:id="checkBox1" onAction="#handleCheckBoxAction"/>
+                        <CheckBox text="Graphic 2" fx:id="checkBox2" onAction="#handleCheckBoxAction"/>
+                        <CheckBox text="Graphic 3" fx:id="checkBox3" onAction="#handleCheckBoxAction"/>
+                    </children>
                 </VBox>
             </Pane>
         </VBox>
