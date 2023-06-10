@@ -155,7 +155,7 @@ public class SeismeController {
         SetChart3();
 
         // ajout image button
-        Image imgButtonMenu = new Image(SeismeController.class.getResource("buttonMenu.jpg").toString());
+        Image imgButtonMenu = new Image(SeismeController.class.getResource("buttonMenu.png").toString());
         ImageView viewButtonMenu = new ImageView();
         viewButtonMenu.setImage(imgButtonMenu);
         buttonMenuChoice.setGraphic(viewButtonMenu);
