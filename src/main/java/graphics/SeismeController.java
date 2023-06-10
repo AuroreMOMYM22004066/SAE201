@@ -608,5 +608,7 @@ public class SeismeController {
         xAxis.setLowerBound(Integer.parseInt(minDate));
         xAxis.setUpperBound(Integer.parseInt(maxDate));
         xAxis.setTickUnit(20);
+
+        lineChart.setVisible(false);
     }
 }

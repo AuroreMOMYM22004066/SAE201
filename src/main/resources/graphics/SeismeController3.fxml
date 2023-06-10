@@ -27,7 +27,7 @@
         <GridPane>
             <PieChart fx:id="pieChart1" prefWidth="1300.0" prefHeight="1000.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
-            <PieChart fx:id="pieChart2" prefWidth="1300.0" prefHeight="1000.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <PieChart fx:id="pieChart2" prefWidth="1300.0" prefHeight="1000.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
             <LineChart fx:id="lineChart" >
                 <xAxis> <NumberAxis label="X Axis" /> </xAxis>
