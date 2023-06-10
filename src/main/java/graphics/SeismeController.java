@@ -158,6 +158,10 @@ public class SeismeController {
         Image imgButtonMenu = new Image(SeismeController.class.getResource("buttonMenu.png").toString());
         ImageView viewButtonMenu = new ImageView();
         viewButtonMenu.setImage(imgButtonMenu);
+        viewButtonMenu.setFitHeight(30);
+        viewButtonMenu.setFitWidth(30);
+        viewButtonMenu.setPreserveRatio(true);
+
         buttonMenuChoice.setGraphic(viewButtonMenu);
 
     }

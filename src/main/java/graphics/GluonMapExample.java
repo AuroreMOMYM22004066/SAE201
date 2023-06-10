@@ -30,11 +30,11 @@ public class GluonMapExample {
     System.setProperty("http.agent", "Gluon Mobile/1.0.3");
 
     /* Set zoom */
-    mapView.setZoom(5.5);
+    mapView.setZoom(5.8);
 
     /* resize the map (fxml) */
-    mapView.setMinSize(500, 500);
-    mapView.setMaxSize(500, 500);
+    mapView.setMinSize(700, 700);
+    mapView.setMaxSize(700, 700);
 
     /* add the map to the scene */
     root.getChildren().add(mapView);
