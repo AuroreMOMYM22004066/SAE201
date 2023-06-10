@@ -36,13 +36,17 @@
             <Label text="(tous les champs sont facultatif)"/>
             <GridPane styleClass="gridPane">
 
+                <!--     Identifier     -->
+                <Label styleClass="textPage1" text="Identifiant : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="FilterIdentifier" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="id a rechercher"  onAction="#IdentifierChanger"/>
+
                 <!--     Name     -->
-                <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <TextField fx:id="FilterName" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Nom a rechercher" onAction="#NameChanger"/>
+                <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="FilterName" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Nom a rechercher" onAction="#NameChanger"/>
 
                 <!--     Régions     -->
-                <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <ComboBox fx:id="comboBoxDep" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Région" onAction="#RegionChanger">
+                <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <ComboBox fx:id="comboBoxReg" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="Région" onAction="#RegionChanger">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="TOUS"/>
@@ -99,20 +103,20 @@
 
                 <!--     Latitude     -->
                 <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                <Spinner fx:id="latitude"  editable="true" min="-90"  max="90"  GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
+                <Spinner fx:id="latitude" editable="true" min="-90"  max="90"  GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
 
                 <!--     Longitude     -->
                 <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
                 <Spinner fx:id="longitude" editable="true" min="-180" max="180"  GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="lon"/>
 
                 <!--     Date     -->
-                <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <HBox GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <HBox GridPane.columnIndex="0" GridPane.rowIndex="6">
                         <Label styleClass="textPage1" text="de"/>
                         <DatePicker fx:id="DateFrom" editable="true" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateFromChanger"/>
                     </HBox>
-                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="5">
+                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="6">
                         <Label styleClass="textPage1" text="à"/>
                         <DatePicker fx:id="DateTo"   editable="true" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateToChanger"/>
                     </HBox>
@@ -136,8 +140,8 @@
                 </GridPane>
 
                 <!--     Choc     -->
-                <Label styleClass="textPage1" text="Choc : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                <ComboBox fx:id="comboBoxChoc" GridPane.columnIndex="1" GridPane.rowIndex="9" promptText="choc"  onAction="#ChocChanger" >
+                <Label styleClass="textPage1" text="Choc : " GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <ComboBox fx:id="comboBoxChoc" GridPane.columnIndex="1" GridPane.rowIndex="8" promptText="choc"  onAction="#ChocChanger" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="TOUS"/>
@@ -150,13 +154,13 @@
                 </ComboBox>
 
                 <!--     Intensity     -->
-                <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="10"/>
-                <TextField fx:id="FilterIntensity" GridPane.columnIndex="1" GridPane.rowIndex="10"></TextField>
-                <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3"/>
+                <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <TextField fx:id="FilterIntensity" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                <Slider fx:id="slider" min="2" max="12" showTickMarks="false" showTickLabels="true" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
 
                 <!--     Recherche Button     -->
-                <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="3" >
-                    <Button fx:id="rechercheButton" text="Recherche" onAction="#AapplyFilters"/>
+                <HBox  styleClass="rechercheButton" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3" >
+                    <Button fx:id="rechercheButton" text="Recherche" onAction="#ResearchButton"/>
                 </HBox>
 
             </GridPane>

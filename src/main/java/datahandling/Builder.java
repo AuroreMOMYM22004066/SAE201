@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Builder {
 
-    public enum Header{
+    public static enum Header{
         Identifiant("Identifiant"),
         Date("Date (AAAA/MM/JJ)"),
         Heure("Heure"),

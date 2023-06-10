@@ -3,6 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.collections.ObservableList?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1000" minHeight="600">
     <top>
         <HBox styleClass="hbox">
@@ -16,4 +22,23 @@
             <Label text="Recherche de séismes" styleClass="titre"/>
         </HBox>
     </top>
+
+    <center>
+        <GridPane>
+            <PieChart fx:id="pieChart1" prefWidth="1300.0" prefHeight="1000.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+            <PieChart fx:id="pieChart2" prefWidth="1300.0" prefHeight="1000.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+
+            <LineChart fx:id="lineChart" >
+
+                <xAxis> <NumberAxis label="X Axis"/> </xAxis>
+
+                <yAxis> <NumberAxis label="Y Axis"/> </yAxis>
+
+            </LineChart>
+
+        </GridPane>
+    </center>
+
 </BorderPane>

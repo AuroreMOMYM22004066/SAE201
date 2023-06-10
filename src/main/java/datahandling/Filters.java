@@ -38,11 +38,15 @@ public class Filters {
         List<Map<String, String>> data = new ArrayList<>();
 
         for (Map<String, String> Sis: CSV) {
-            double x = Double.parseDouble(Sis.get("Latitude en WGS 84"));
-            double y = Double.parseDouble(Sis.get("Longitude en WGS 84"));
-            if (X-range <= x && x <= X+range && Y-range <= y && y <= Y+range){
-                if (Math.sqrt((x-X)*(x-X) + (y-Y)*(y-Y)) <= range){
-                    data.add(Sis);
+
+            if (Sis.get(Builder.Header.Latitude_WGS84.getValue()) != "" && Sis.get(Builder.Header.Longitude_WGS84.getValue()) != "")
+            {
+                double x = Double.parseDouble(Sis.get(Builder.Header.Latitude_WGS84.getValue()));
+                double y = Double.parseDouble(Sis.get(Builder.Header.Longitude_WGS84.getValue()));
+                if (X-range <= x && x <= X+range && Y-range <= y && y <= Y+range){
+                    if (Math.sqrt((x-X)*(x-X) + (y-Y)*(y-Y)) <= range){
+                        data.add(Sis);
+                    }
                 }
             }
         }
