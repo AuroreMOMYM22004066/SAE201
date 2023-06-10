@@ -38,14 +38,12 @@
     </center>
     <right>
         <VBox>
-            <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT" style="-fx-background-color: light grey" onAction="#showMenu"/>
+            <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT" style="-fx-background-color: lightgrey" onAction="#showMenu"/>
             <Pane fx:id="menuDash" visible="false" style="-fx-background-color: grey" minWidth="50" minHeight="200">
                 <VBox styleClass="hbox">
-                    <children>
-                        <CheckBox text="Graphic 1" fx:id="checkBox1" onAction="#handleCheckBoxAction"/>
-                        <CheckBox text="Graphic 2" fx:id="checkBox2" onAction="#handleCheckBoxAction"/>
-                        <CheckBox text="Graphic 3" fx:id="checkBox3" onAction="#handleCheckBoxAction"/>
-                    </children>
+                    <CheckBox text="Graphic 1" fx:id="checkBox1" onAction="#handleCheckBox1"/>
+                    <CheckBox text="Graphic 2" fx:id="checkBox2" onAction="#handleCheckBox2"/>
+                    <CheckBox text="Graphic 3" fx:id="checkBox3" onAction="#handleCheckBox3"/>
                 </VBox>
             </Pane>
         </VBox>

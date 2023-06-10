@@ -5,7 +5,6 @@ import com.gluonhq.maps.MapPoint;
 import datahandling.Builder;
 import datahandling.Filters;
 
-import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
 
 import javafx.collections.FXCollections;
@@ -37,6 +36,8 @@ import java.util.*;
 
 import static graphics.GluonMapExample.*;
 import static datahandling.Builder.*;
+
+
 
 
 public class SeismeController {
@@ -331,25 +332,39 @@ public class SeismeController {
     private CheckBox checkBox3;
 
     @FXML
-    private void handleCheckBoxAction() {
-        CheckBox selectedCheckBox = null;
-        if (checkBox1.isSelected()) {
-            selectedCheckBox = checkBox1;
-        }
-        else if (checkBox2.isSelected()) {
-            selectedCheckBox = checkBox2;
-        }
-        else if (checkBox3.isSelected()) {
-            selectedCheckBox = checkBox3;
-        }
+    private void handleCheckBox1() {
+        if (checkBox1.isSelected()){
+            checkBox2.setSelected(false);
+            checkBox3.setSelected(false);
 
-        if (selectedCheckBox != null) {
-            checkBox1.setSelected(selectedCheckBox.equals(checkBox1));
-            checkBox2.setSelected(selectedCheckBox.equals(checkBox2));
-            checkBox3.setSelected(selectedCheckBox.equals(checkBox3));
+            pieChart1.setVisible(true);
+            pieChart2.setVisible(false);
+            lineChart.setVisible(false);
         }
     }
 
+    @FXML
+    private void handleCheckBox2() {
+        if (checkBox2.isSelected()){
+            checkBox1.setSelected(false);
+            checkBox3.setSelected(false);
+
+            pieChart1.setVisible(false);
+            pieChart2.setVisible(true);
+            lineChart.setVisible(false);
+        }
+    }
+    @FXML
+    private void handleCheckBox3() {
+        if (checkBox3.isSelected()){
+            checkBox1.setSelected(false);
+            checkBox2.setSelected(false);
+
+            pieChart1.setVisible(false);
+            pieChart2.setVisible(false);
+            lineChart.setVisible(true);
+        }
+    }
 
     @FXML private Pane menuDash;
     public void showMenu() {
