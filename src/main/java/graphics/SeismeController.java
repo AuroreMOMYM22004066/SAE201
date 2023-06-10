@@ -253,6 +253,18 @@ public class SeismeController {
             DateToChanger();
         });
 
+        FilterIntensity.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty()){
+                if (CheckIntensity(newValue)){
+                    FilterIntensity.setText(newValue);
+                } else {
+                    FilterIntensity.setText(oldValue);
+                }
+            }
+
+            IdentifierChanger();
+        });
+
         // Apply Formatter : int
         TextFormatter<String> IDFormatter = createFormatter();
         FilterIdentifier.setTextFormatter(IDFormatter);
@@ -273,7 +285,7 @@ public class SeismeController {
         latitude.getEditor().setTextFormatter(lonFormatter);
     }
     private TextFormatter<String> createFormatter() {
-        TextFormatter<String> formatter = new TextFormatter<>(change -> {
+        return new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
             if (newText.matches("\\d*")) {
@@ -282,15 +294,26 @@ public class SeismeController {
 
             return null;
         });
-        return formatter;
     }
-
 
     public void createBindings() {
         DoubleProperty doubleMacrosismique = slider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
 
         FilterIntensity.textProperty().bindBidirectional(doubleMacrosismique, converter);
+    }
+
+    private boolean CheckIntensity(String value){
+        try {
+            if (value.contains("d") || value.contains("D") || value.contains("f") || value.contains("F")) {
+                return false;
+            }
+            value = value.replace(",", ".");
+            double nombre = Double.parseDouble(value);
+            return nombre % 0.5 == 0;
+        } catch (Exception e){
+            return false;
+        }
     }
 
 
