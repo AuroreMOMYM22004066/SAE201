@@ -25,7 +25,7 @@ public class CSVController {
 
     // Get path to CSV file (Récupérer l'emplacement du fichier CSV)
     private static String GetPath(String fileName){
-        File f = new File("src/main/resources/CSV/" + fileName);
+        File f = new File("src/main/resources/Data/" + fileName);
         return f.getPath();
     }
 
