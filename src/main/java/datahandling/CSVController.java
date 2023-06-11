@@ -46,7 +46,7 @@ public class CSVController {
     private static List<String> ParserLine(int index){
 
         List<String> line = new ArrayList<>();
-        String ligne = RemoveComaInQuotes(Content.get(index));
+        String ligne = RemoveCommaInQuotes(Content.get(index));
         String[] data = ligne.split(",");
 
         for (String datum : data) {
@@ -83,7 +83,7 @@ public class CSVController {
 
 
     // Remove in column coma (Enleve les virgules dans les colonens)
-    private static String RemoveComaInQuotes(String line){
+    private static String RemoveCommaInQuotes(String line){
         boolean add = true;
         String newline = "";
         for (int i = 0; i < line.length(); i++) { // parcourir la String

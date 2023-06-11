@@ -38,11 +38,7 @@ import static graphics.GluonMap.*;
 import static datahandling.Builder.*;
 
 
-
-
 public class SeismeController {
-
-
 
     /*     Menu Principal     */
     @FXML private MenuBar menuBar;
