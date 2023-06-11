@@ -339,6 +339,8 @@ public class SeismeController {
             pieChart1.setVisible(true);
             pieChart2.setVisible(false);
             lineChart.setVisible(false);
+        } else {
+            pieChart1.setVisible(false);
         }
     }
 
@@ -350,6 +352,8 @@ public class SeismeController {
             pieChart1.setVisible(false);
             pieChart2.setVisible(true);
             lineChart.setVisible(false);
+        } else {
+            pieChart2.setVisible(false);
         }
     }
     @FXML private void handleCheckBox3() {
@@ -360,6 +364,8 @@ public class SeismeController {
             pieChart1.setVisible(false);
             pieChart2.setVisible(false);
             lineChart.setVisible(true);
+        } else {
+            lineChart.setVisible(false);
         }
     }
 
