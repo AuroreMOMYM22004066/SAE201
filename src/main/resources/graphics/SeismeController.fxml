@@ -18,7 +18,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Spinner?>
 
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1500" minHeight="800">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1500" minHeight="800" style="-fx-background-color: #856A5D">
     <top>
         <HBox styleClass="hboxTitre">
             <MenuBar fx:id="menuBar">
@@ -33,7 +33,7 @@
     </top>
     <center>
         <VBox>
-            <Label text="(tous les champs sont facultatif)"/>
+            <Label styleClass="text" text="(tous les champs sont facultatif)"/>
             <GridPane styleClass="gridPane">
 
                 <!--     Identifier     -->
@@ -170,7 +170,7 @@
         <VBox fx:id="mapContainer" />
     </right>
     <bottom>
-        <HBox styleClass="hbox" alignment="CENTER_RIGHT">
+        <HBox styleClass="hboxTitre" alignment="CENTER_RIGHT">
             <Button fx:id="reset" styleClass="button" text="Vider" onAction="#ResetButton"/>
         </HBox>
     </bottom>

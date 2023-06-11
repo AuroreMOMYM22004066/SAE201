@@ -1,7 +1,6 @@
 
 .titre {
-    /*-fx-text-fill: #FF8811;
-    -fx-background-color: #0D1321;*/
+    -fx-text-fill: #CCC9E7;
     -fx-max-width: 1000;
     -fx-font-size: 20;
 }
@@ -9,25 +8,43 @@
 .hboxTitre {
     -fx-padding: 10;
     -fx-spacing: 10;
-    -fx-background-color: #D7D7D7;
+    -fx-background-color: #403D39;
 
 }
 
+
+
+.text {
+    -fx-text-fill: #CCC9E7;
+}
+
 .textPage1 {
-    /*-fx-text-fill: #FF8811;*/
+    -fx-text-fill: #CCC9E7;
     -fx-font-size: 14;
     -fx-padding: 10;
 
 }
+
+
 
 .hbox {
     -fx-padding: 10;
     -fx-spacing: 10;
 }
 
+.gridPane {
+    /*-fx-background-color: #393E41;*/
+    -fx-padding: 10;
+}
+
+
+
+
 .button {
     -fx-padding: 8;
     -fx-spacing: 10;
+    -fx-background-color: #FFFCF2;
+    -fx-text-fill: #252422;
 }
 
 .slider {
@@ -36,14 +53,9 @@
     -fx-major-tick-unit: 2;
     -fx-snap-to-ticks: true;
     -fx-block-increment: 2;
+    -fx-tick-label-fill: #CCC9E7;
 }
 
-.gridPane {
-    /*-fx-background-color: #393E41;*/
-    -fx-padding: 10;
-}
 
-.rechercheButton {
-    -fx-alignment: center;
-}
+
 
