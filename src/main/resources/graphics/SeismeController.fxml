@@ -103,11 +103,11 @@
 
                 <!--     Latitude     -->
                 <Label styleClass="textPage1" text="Latitude" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                <Spinner fx:id="latitude" editable="true" min="-90"  max="90"  GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
+                <Spinner fx:id="latitude" editable="true" min="-90"  max="90" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="lat"/>
 
                 <!--     Longitude     -->
                 <Label styleClass="textPage1" text="Longitude" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                <Spinner fx:id="longitude" editable="true" min="-180" max="180"  GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="lon"/>
+                <Spinner fx:id="longitude" editable="true" min="-180" max="180" GridPane.columnIndex="1" GridPane.rowIndex="4" promptText="lon"/>
 
                 <!--     Date     -->
                 <Label styleClass="textPage1" text="Date : " GridPane.columnIndex="0" GridPane.rowIndex="6"/>
@@ -116,7 +116,7 @@
                         <Label styleClass="textPage1" text="de"/>
                         <DatePicker fx:id="DateFrom" editable="true" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateFromChanger"/>
                     </HBox>
-                    <HBox styleClass="hbox" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                    <HBox GridPane.columnIndex="2" GridPane.rowIndex="6">
                         <Label styleClass="textPage1" text="à"/>
                         <DatePicker fx:id="DateTo"   editable="true" promptText="JJ/MM/AAAA" style="-fx-pref-width: 115px;" onAction="#DateToChanger"/>
                     </HBox>
@@ -156,7 +156,7 @@
                 <!--     Intensity     -->
                 <Label styleClass="textPage1" text="Niveau d'intensité macrosismique : " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                 <TextField fx:id="FilterIntensity" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-                <Slider fx:id="slider" styleClass="slider" min="2" max="12" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
+                <Slider fx:id="slider" styleClass="slider" min="2" max="12" value="NaN" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="3"/>
 
                 <!--     Recherche Button     -->
                 <HBox  styleClass="hbox" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="3" alignment="CENTER" >

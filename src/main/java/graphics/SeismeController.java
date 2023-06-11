@@ -63,7 +63,7 @@ public class SeismeController {
     private String[] Dates = new String[2];
     private String[] Time  = new String[3];
     private String Choc;
-    private String Intensity;
+    private String Intensity = null;
 
 
 
@@ -92,7 +92,9 @@ public class SeismeController {
     @FXML private PieChart pieChart2;
     @FXML private LineChart<Number, Number> lineChart;
 
-
+    @FXML private CheckBox checkBox1;
+    @FXML private CheckBox checkBox2;
+    @FXML private CheckBox checkBox3;
 
     /*     Page 1 Initializer     */
     public void initialize1(VBox mapRoot) throws IOException {
@@ -281,7 +283,7 @@ public class SeismeController {
                 }
             }
 
-            IdentifierChanger();
+            IntensityChanger();
         });
 
         // Apply Formatter : int
@@ -327,9 +329,7 @@ public class SeismeController {
 
     }
 
-    @FXML private CheckBox checkBox1;
-    @FXML private CheckBox checkBox2;
-    @FXML private CheckBox checkBox3;
+
 
     @FXML private void handleCheckBox1() {
         if (checkBox1.isSelected()){
@@ -343,7 +343,6 @@ public class SeismeController {
             pieChart1.setVisible(false);
         }
     }
-
     @FXML private void handleCheckBox2() {
         if (checkBox2.isSelected()){
             checkBox1.setSelected(false);
@@ -441,6 +440,9 @@ public class SeismeController {
         if (Objects.equals(Choc, "N/A")) Choc = "";
         if (Objects.equals(Choc, "TOUS")) Choc = null;
     }
+    @FXML private void IntensityChanger(){
+        Intensity = FilterIntensity.getText();
+    }
 
 
     /*     Reset button     */
@@ -489,7 +491,12 @@ public class SeismeController {
         if (Dates[0] != null && Dates[1] != null) { data = Filters.BetweenDate(data, Dates[0], Dates[1]); }
         else if (Dates[0] != null) { data = Filters.AtDate(data, Dates[0]); }
         if (Choc != null) { data = Filters.WithChoc(data, Choc); }
-        if (Intensity != null) { data = Filters.AtIntensity(data, Intensity); }
+
+        System.out.println(data.size());
+
+        if (Intensity != null && !Intensity.equals("")) { data = Filters.AtIntensity(data, Intensity); }
+
+        System.out.println(data.size());
     }
     private  void UpdateMapPoints() {
         addMarker(Builder.data);

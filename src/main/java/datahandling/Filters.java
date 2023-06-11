@@ -109,7 +109,7 @@ public class Filters {
     public static List<Map<String, String>> AtIntensity (List<Map<String, String>> CSV, String intensity) {
         // At a specified intensity "intensité épicentrale"
         return CSV.stream()
-                .filter(dico -> Objects.equals(dico.get("intensité épicentrale"), intensity))
+                .filter(dico -> Objects.equals(dico.get(Builder.Header.IntensiteEpicentrale.getValue()), intensity))
                 .collect(Collectors.toList());
     }
 
