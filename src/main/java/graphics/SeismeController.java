@@ -34,7 +34,7 @@ import javafx.util.converter.NumberStringConverter;
 import java.io.IOException;
 import java.util.*;
 
-import static graphics.GluonMapExample.*;
+import static graphics.GluonMap.*;
 import static datahandling.Builder.*;
 
 
@@ -87,11 +87,14 @@ public class SeismeController {
     @FXML private Button buttonMenuChoice;
 
 
-    /*     Charts     */
+    /*     Charts Page 3     */
+    @FXML private PieChart pieChart1;
+    @FXML private PieChart pieChart2;
+    @FXML private LineChart<Number, Number> lineChart;
 
 
 
-    /*     Main Page Initializer     */
+    /*     Page 1 Initializer     */
     public void initialize1(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
 
@@ -177,7 +180,7 @@ public class SeismeController {
         Parent page = fxmlLoader.load();
 
         SeismeController controller = fxmlLoader.getController();
-        VBox mapRoot = GluonMapExample.displayMap();
+        VBox mapRoot = GluonMap.displayMap();
         controller.initialize1(mapRoot);
 
         Scene scene = menuBar.getScene();
@@ -324,15 +327,11 @@ public class SeismeController {
 
     }
 
-    @FXML
-    private CheckBox checkBox1;
-    @FXML
-    private CheckBox checkBox2;
-    @FXML
-    private CheckBox checkBox3;
+    @FXML private CheckBox checkBox1;
+    @FXML private CheckBox checkBox2;
+    @FXML private CheckBox checkBox3;
 
-    @FXML
-    private void handleCheckBox1() {
+    @FXML private void handleCheckBox1() {
         if (checkBox1.isSelected()){
             checkBox2.setSelected(false);
             checkBox3.setSelected(false);
@@ -343,8 +342,7 @@ public class SeismeController {
         }
     }
 
-    @FXML
-    private void handleCheckBox2() {
+    @FXML private void handleCheckBox2() {
         if (checkBox2.isSelected()){
             checkBox1.setSelected(false);
             checkBox3.setSelected(false);
@@ -354,8 +352,7 @@ public class SeismeController {
             lineChart.setVisible(false);
         }
     }
-    @FXML
-    private void handleCheckBox3() {
+    @FXML private void handleCheckBox3() {
         if (checkBox3.isSelected()){
             checkBox1.setSelected(false);
             checkBox2.setSelected(false);
@@ -493,14 +490,6 @@ public class SeismeController {
     }
 
 
-
-    /*     Charts Page 3     */
-    @FXML private PieChart pieChart1;
-    @FXML private PieChart pieChart2;
-    @FXML private LineChart<Number, Number> lineChart;
-
-
-
     private void SetChart1(){
         // Intensité par région
 
@@ -550,7 +539,7 @@ public class SeismeController {
             pieChartData.add(new PieChart.Data(key, value));
         }
 
-        pieChart2.setTitle("Intensité des seismes par région");
+        pieChart2.setTitle("Intensité des seismes");
         pieChart2.setData(pieChartData);
 
         pieChart2.setVisible(false);

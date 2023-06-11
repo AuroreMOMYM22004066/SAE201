@@ -15,7 +15,7 @@ public class CSVController {
 
 
     // Create the data that contain the csv (Créé la data qui contient le fichier csv)
-    public static List<Map<String, String>> ExtractCSV(String fileName) throws IOException {
+    protected static List<Map<String, String>> ExtractCSV(String fileName) throws IOException {
         String AbsolutePath = GetPath(fileName);
         OpenCsv(AbsolutePath);
         ParserHeader();

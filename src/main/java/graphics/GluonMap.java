@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class GluonMapExample {
+public class GluonMap {
 
   public static MapView mapView;
   private static List<MapLayer> mapLayers = new ArrayList<>();
@@ -74,7 +74,7 @@ public class GluonMapExample {
     mapView.flyTo(0, newCenter, 0.1);
   }
 
-  static void removeMarkers(){
+  public static void removeMarkers(){
     for (MapLayer mapLayer: mapLayers ) {
       mapView.removeLayer(mapLayer);
     }

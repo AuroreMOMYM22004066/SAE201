@@ -6,6 +6,13 @@ import java.util.stream.Collectors;
 public class Filters {
     /// Contains all filters that can be applied on the actual list that represent the CSV
 
+    public static List<Map<String, String>> WithIdentifier(List<Map<String, String>> CSV, String identifier) {
+        // With a specified identifier "identifier"
+        return CSV.stream()
+                .filter(dico -> dico.get("Identifiant").contains(identifier))
+                .collect(Collectors.toList());
+    }
+
     public static List<Map<String, String>> WithName(List<Map<String, String>> CSV, String name) {
         // With a specified name "name" (filtrer avec un nom <Name>)
         return CSV.stream()
@@ -99,7 +106,6 @@ public class Filters {
                 .collect(Collectors.toList());
     }
 
-
     public static List<Map<String, String>> AtIntensity (List<Map<String, String>> CSV, String intensity) {
         // At a specified intensity "intensité épicentrale"
         return CSV.stream()
@@ -107,19 +113,7 @@ public class Filters {
                 .collect(Collectors.toList());
     }
 
-    public static List<Map<String, String>> WithQIE(List<Map<String, String>> CSV, String QIE){
-        // At a specified QIE "Qualité intensité épicentrale"
-        return CSV.stream()
-                .filter(dico -> Objects.equals(dico.get("Qualité intensité épicentrale"), QIE))
-                .collect(Collectors.toList());
-    }
 
-    public static List<Map<String, String>> WithIdentifier(List<Map<String, String>> CSV, String identifier) {
-        // With a specified identifier "identifier"
-        return CSV.stream()
-                .filter(dico -> dico.get("Identifiant").contains(identifier))
-                .collect(Collectors.toList());
-    }
 
 
     private static boolean BtwDate(int[] Min, int[] Max, String year){

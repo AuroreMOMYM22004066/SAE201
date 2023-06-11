@@ -1,13 +1,12 @@
 package datahandling;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 public class Builder {
 
-    public static enum Header{
+    public enum Header{
         Identifiant("Identifiant"),
         Date("Date (AAAA/MM/JJ)"),
         Heure("Heure"),

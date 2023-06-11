@@ -25,7 +25,7 @@ public class SeismeApplication extends Application {
         // Get the controller instance
         SeismeController controller = fxmlLoader.getController();
         // Initialize the VBox with the map
-        VBox mapRoot = GluonMapExample.displayMap();
+        VBox mapRoot = GluonMap.displayMap();
         controller.initialize1(mapRoot);
     }
 
