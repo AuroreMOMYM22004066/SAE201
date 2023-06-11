@@ -491,12 +491,7 @@ public class SeismeController {
         if (Dates[0] != null && Dates[1] != null) { data = Filters.BetweenDate(data, Dates[0], Dates[1]); }
         else if (Dates[0] != null) { data = Filters.AtDate(data, Dates[0]); }
         if (Choc != null) { data = Filters.WithChoc(data, Choc); }
-
-        System.out.println(data.size());
-
-        if (Intensity != null && !Intensity.equals("")) { data = Filters.AtIntensity(data, Intensity); }
-
-        System.out.println(data.size());
+        if (Intensity != null && !Intensity.equals("")) { data = Filters.AtIntensity(data, Intensity.replace("," , ".")); }
     }
     private  void UpdateMapPoints() {
         addMarker(Builder.data);
