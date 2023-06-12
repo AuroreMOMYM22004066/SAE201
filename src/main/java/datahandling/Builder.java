@@ -39,8 +39,11 @@ public class Builder {
     public static List<Map<String, String>> AllData; // without filters
     public static List<Map<String, String>> data;   // with filters
 
-    // Build the CSV in a List<Map<String, String>>
+    /**
+     * Extracts the contents of the .csv file and assigns it to the AllData and the data values.
+     */
     public static void build() throws IOException {
+        // Build the CSV in a List<Map<String, String>>
         String fileName = "SisFrance_seismes_20230604151458.csv";
 
         AllData = CSVController.ExtractCSV(fileName);
