@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SeismeApplication extends Application {
+
+    /**
+     * Starts and initialise the application
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController.fxml"));
@@ -29,6 +33,9 @@ public class SeismeApplication extends Application {
         controller.initialize1(mapRoot);
     }
 
+    /**
+     * Launch the Application
+     */
     public static void main(String[] args) {
         launch();
     }

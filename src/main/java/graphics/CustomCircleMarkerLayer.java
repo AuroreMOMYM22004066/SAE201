@@ -12,6 +12,10 @@ public class CustomCircleMarkerLayer extends MapLayer {
     private MapPoint mapPoint;
     private Circle circle;
 
+    /**
+     * Creates a nex point on the map
+     * @param mapPoint the point to add on the map
+     */
     public CustomCircleMarkerLayer(MapPoint mapPoint) {
         this.mapPoint = mapPoint;
 
@@ -22,6 +26,9 @@ public class CustomCircleMarkerLayer extends MapLayer {
         this.getChildren().add(circle);
     }
 
+    /**
+     * Refresh points when the map is updated
+     */
     @Override
     protected void layoutLayer() {
         /* Conversion du MapPoint vers Point2D */

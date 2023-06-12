@@ -20,6 +20,10 @@ public class GluonMap {
   public static MapView mapView;
   private static List<MapLayer> mapLayers = new ArrayList<>();
 
+  /**
+   * Create and return an instance of the Gluon Map
+   * @return an instance of the Gluon Map
+   */
   public static VBox displayMap() {
     Stage stage = new Stage();
     VBox root = new VBox();
@@ -43,7 +47,14 @@ public class GluonMap {
     return root;
   }
 
+  /**
+   * Add markers on the map after removing the old ones
+   * @param data  the data that contains the points that we will display on the map
+   * @see #removeMarkers()
+   */
   public static void addMarker(List<Map<String, String>> data) {
+
+    removeMarkers();
 
     for (Map<String, String> line: data ) {
       if (line.get(Builder.Header.Latitude_WGS84.getValue()) != "" && line.get(Builder.Header.Longitude_WGS84.getValue()) != "")
@@ -62,6 +73,9 @@ public class GluonMap {
     refresh();
   }
 
+  /**
+   * Simulate an update of the map
+   */
   private static void refresh(){
     MapPoint currentCenter = mapView.getCenter();
     double latitude = currentCenter.getLatitude();
@@ -74,6 +88,9 @@ public class GluonMap {
     mapView.flyTo(0, newCenter, 0.1);
   }
 
+  /**
+   * Remove all markers of the map.
+   */
   public static void removeMarkers(){
     for (MapLayer mapLayer: mapLayers ) {
       mapView.removeLayer(mapLayer);

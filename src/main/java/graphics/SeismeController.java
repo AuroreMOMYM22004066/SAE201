@@ -92,7 +92,16 @@ public class SeismeController {
     @FXML private CheckBox checkBox2;
     @FXML private CheckBox checkBox3;
 
+    /* Menu Dash page 3 */
+    @FXML private Pane menuDash;
+
+
+
     /*     Page 1 Initializer     */
+
+    /**
+     * Initialise the first page of the application
+     */
     public void initialize1(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
 
@@ -107,6 +116,9 @@ public class SeismeController {
 
 
     /*     Page 2 Initializer     */
+    /**
+     * Initialise the Second page of the application by initialising the board
+     */
     public void initialize2(List<Map<String, String>> data) throws IOException {
         // Display the content of the data in the TableView
 
@@ -153,6 +165,9 @@ public class SeismeController {
 
 
     /*     Page 3 Initializer     */
+    /**
+     * Initialise the third page of the application by initialising the charts and the button menu
+     */
     private void initializer3() {
         SetChart1();
         SetChart2();
@@ -173,6 +188,11 @@ public class SeismeController {
 
 
     /*     Switch page     */
+
+    /**
+     * Loads the first page when the event is activated
+     * @param event lunched when the user select the first page on the main menu
+     */
     @FXML private void chargerPage1(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController.fxml"));
         Parent page = fxmlLoader.load();
@@ -184,6 +204,10 @@ public class SeismeController {
         Scene scene = menuBar.getScene();
         scene.setRoot(page);
     }
+    /**
+     * Loads the second page when the event is activated
+     * @param event lunched when the user select the second page on the main menu
+     */
     @FXML private void chargerPage2(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController2.fxml"));
         Parent page = fxmlLoader.load();
@@ -194,6 +218,10 @@ public class SeismeController {
         Scene scene = menuBar.getScene();
         scene.setRoot(page);
     }
+    /**
+     * Loads the third page when the event is activated
+     * @param event lunched when the user select the third page on the main menu
+     */
     @FXML private void chargerPage3(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("SeismeController3.fxml"));
         Parent page = fxmlLoader.load();
@@ -208,6 +236,11 @@ public class SeismeController {
 
 
     /*     Set Formatter & Listener on TextFields     */
+
+    /**
+     * Add listeners to some fxml functionalities and add some formatters
+     * @see #createFormatter
+     */
     private void setFormattersListeners() {
 
         // Add Listener on TextField
@@ -301,6 +334,11 @@ public class SeismeController {
         TextFormatter<String> lonFormatter = createFormatter();
         latitude.getEditor().setTextFormatter(lonFormatter);
     }
+
+    /**
+     * Create an int formatter for fxml functionalities and return its
+     * @return int formatter for fxml functionalities
+     */
     private TextFormatter<String> createFormatter() {
         return new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
@@ -313,66 +351,12 @@ public class SeismeController {
         });
     }
 
-    //------------------------------------------------------------------------------------------//
-    //                                                                                          //
-    //------------------------------------------------------------------------------------------//
 
-    public void createBindings() {
-        DoubleProperty doubleMacrosismique = slider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
-
-        FilterIntensity.textProperty().bindBidirectional(doubleMacrosismique, converter);
-
-    }
-
-
-
-    @FXML private void handleCheckBox1() {
-        if (checkBox1.isSelected()){
-            checkBox2.setSelected(false);
-            checkBox3.setSelected(false);
-
-            pieChart1.setVisible(true);
-            pieChart2.setVisible(false);
-            lineChart.setVisible(false);
-        } else {
-            pieChart1.setVisible(false);
-        }
-    }
-    @FXML private void handleCheckBox2() {
-        if (checkBox2.isSelected()){
-            checkBox1.setSelected(false);
-            checkBox3.setSelected(false);
-
-            pieChart1.setVisible(false);
-            pieChart2.setVisible(true);
-            lineChart.setVisible(false);
-        } else {
-            pieChart2.setVisible(false);
-        }
-    }
-    @FXML private void handleCheckBox3() {
-        if (checkBox3.isSelected()){
-            checkBox1.setSelected(false);
-            checkBox2.setSelected(false);
-
-            pieChart1.setVisible(false);
-            pieChart2.setVisible(false);
-            lineChart.setVisible(true);
-        } else {
-            lineChart.setVisible(false);
-        }
-    }
-
-    @FXML private Pane menuDash;
-    public void showMenu() {
-        if (menuDash.isVisible())
-            menuDash.setVisible(false);
-        else
-            menuDash.setVisible(true);
-    }
-
-
+    /**
+     * Takes a string that represent the value of the intensity and check if it is correct
+     * @param value the value of the intensity
+     * @return a boolean that represent if the intensity is correct
+     */
     private boolean CheckIntensity(String value){
         try {
             if (value.contains("d") || value.contains("D") || value.contains("f") || value.contains("F")) {
@@ -387,25 +371,118 @@ public class SeismeController {
     }
 
 
+
+    /**
+     * Create a binding between a TextField and a Slider
+     */
+    public void createBindings() {
+        DoubleProperty doubleMacrosismique = slider.valueProperty();
+        StringConverter<Number> converter = new NumberStringConverter();
+
+        FilterIntensity.textProperty().bindBidirectional(doubleMacrosismique, converter);
+
+    }
+
+
+
+    /* Choose graph menu on page 3 */
+    /**
+     * Display the selection graph menu on the page 3
+     */
+    public void showMenu() {
+        if (menuDash.isVisible())
+            menuDash.setVisible(false);
+        else
+            menuDash.setVisible(true);
+    }
+
+
+    /**
+     * Handle the change graph menu on page 3 for graph 1
+     */
+    @FXML private void handleCheckBox1() {
+        if (checkBox1.isSelected()){
+            checkBox2.setSelected(false);
+            checkBox3.setSelected(false);
+
+            pieChart1.setVisible(true);
+            pieChart2.setVisible(false);
+            lineChart.setVisible(false);
+        } else {
+            pieChart1.setVisible(false);
+        }
+    }
+    /**
+     * Handle the change graph menu on page 3 for graph 2
+     */
+    @FXML private void handleCheckBox2() {
+        if (checkBox2.isSelected()){
+            checkBox1.setSelected(false);
+            checkBox3.setSelected(false);
+
+            pieChart1.setVisible(false);
+            pieChart2.setVisible(true);
+            lineChart.setVisible(false);
+        } else {
+            pieChart2.setVisible(false);
+        }
+    }
+    /**
+     * Handle the change graph menu on page 3 for graph 3
+     */
+    @FXML private void handleCheckBox3() {
+        if (checkBox3.isSelected()){
+            checkBox1.setSelected(false);
+            checkBox2.setSelected(false);
+
+            pieChart1.setVisible(false);
+            pieChart2.setVisible(false);
+            lineChart.setVisible(true);
+        } else {
+            lineChart.setVisible(false);
+        }
+    }
+
+
+
     /*    OnAction functions     */
+
+    /**
+     * Set the value of Identifiant
+     */
     @FXML private void  IdentifierChanger(){
         Identifiant = FilterIdentifier.getText();
         if (Objects.equals(Identifiant, "")) Identifiant = null;
     }
+    /**
+     * Set the value of Name
+     */
     @FXML private void NameChanger(){
         Name = FilterName.getText();
         if (Objects.equals(Name, "")) Name = null;
     }
+    /**
+     * Set the value of Region
+     */
     @FXML private void RegionChanger() {
         Region = comboBoxReg.getValue();
         if (Objects.equals(Region, "TOUS")) Region = null;
     }
+    /**
+     * Set the value of Lat
+     */
     private void LatitudeChanger(){
         Lat = latitude.getValue();
     }
+    /**
+     * Set the value of Lon
+     */
     private void LongitudeChanger(){
         Lon = longitude.getValue();
     }
+    /**
+     * Set the value of Dates[0]
+     */
     @FXML private void DateFromChanger(){
         String dts = String.valueOf(DateFrom.getValue()).replace("-", "/");
         if (dts.split("/").length == 3){
@@ -414,6 +491,9 @@ public class SeismeController {
             Dates[0] = null;
         }
     }
+    /**
+     * Set the value of Dates[1]
+     */
     @FXML private void DateToChanger(){
         String dts = String.valueOf(DateTo.getValue()).replace("-", "/");
         if (dts.split("/").length == 3){
@@ -422,26 +502,45 @@ public class SeismeController {
             Dates[1] = null;
         }
     }
+    /**
+     * Set the value of Time[0]
+     */
     @FXML private void HourChanger(){
         Time[0] = H.getText();
     }
+    /**
+     * Set the value of Time[1]
+     */
     @FXML private void MinutesChanger(){
         Time[1] = Min.getText();
     }
+    /**
+     * Set the value of Time[2]
+     */
     @FXML private void SecondsChanger(){
         Time[2] = Sec.getText();
     }
+    /**
+     * Set the value of Choc
+     */
     @FXML private void ChocChanger() {
         Choc = comboBoxChoc.getValue();
         if (Objects.equals(Choc, "N/A")) Choc = "";
         if (Objects.equals(Choc, "TOUS")) Choc = null;
     }
+    /**
+     * Set the value of Intensity
+     */
     @FXML private void IntensityChanger(){
         Intensity = FilterIntensity.getText();
     }
 
 
     /*     Reset button     */
+
+    /**
+     * Reset the filters values when activated
+     */
     @FXML private void ResetButton () {
         FilterName.setText("");
 
@@ -469,12 +568,21 @@ public class SeismeController {
 
 
     /*     Reserch button     */
+
+    /**
+     * Actualise the data when activated
+     * @see #UpdateData()
+     * @see #UpdateMapPoints()
+     */
     @FXML private void ResearchButton() {
         UpdateData();
-        removeMarkers();
         UpdateMapPoints();
     }
 
+    /**
+     * Reset the data and update it with the filters
+     * @see Filters
+     */
     private void UpdateData(){
 
         data = AllData;
@@ -489,11 +597,21 @@ public class SeismeController {
         if (Choc != null) { data = Filters.WithChoc(data, Choc); }
         if (Intensity != null && !Intensity.equals("")) { data = Filters.AtIntensity(data, Intensity.replace("," , ".")); }
     }
+
+    /**
+     * Update the markers of the map
+     * @see GluonMap#addMarker(List)
+     */
     private  void UpdateMapPoints() {
         addMarker(Builder.data);
     }
 
 
+    /* Set charts of page 3 */
+
+    /**
+     * Set the first chart
+     */
     private void SetChart1(){
         // Intensité par région
 
@@ -522,6 +640,9 @@ public class SeismeController {
 
     }
 
+    /**
+     * Set the second chart
+     */
     private void SetChart2(){
         // Intensité par région
 
@@ -550,6 +671,9 @@ public class SeismeController {
 
     }
 
+    /**
+     * Set the thirs chart
+     */
     private void SetChart3(){
 
         int pas = 1;
