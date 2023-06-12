@@ -94,7 +94,7 @@ public class SeismeController {
     /**
      * Initialise the first page of the application
      */
-    public void initialize1(VBox mapRoot) throws IOException {
+    protected void initialize1(VBox mapRoot) throws IOException {
         // Initialised in the Seismeapplication so it appears directly when we start the program.
 
         build();
@@ -114,7 +114,7 @@ public class SeismeController {
     /**
      * Initialise the Second page of the application by initialising the board
      */
-    public void initialize2(List<Map<String, String>> data) throws IOException {
+    private void initialize2(List<Map<String, String>> data) throws IOException {
         // Display the content of the data in the TableView
 
         TableColumn<Map<String, String>, String> identifiantColumn = new TableColumn<>("Identifiant");
