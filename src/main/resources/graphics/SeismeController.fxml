@@ -18,6 +18,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Spinner?>
 
+<?import graphics.AutoCompleteTextField?>
+
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="graphics.SeismeController" stylesheets="@style.css" minWidth="1500" minHeight="800" style="-fx-background-color: #856A5D">
     <top>
         <HBox styleClass="hboxTitre">
@@ -38,11 +40,11 @@
 
                 <!--     Identifier     -->
                 <Label styleClass="textPage1" text="Identifiant : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <TextField fx:id="FilterIdentifier" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="id a rechercher"  onAction="#IdentifierChanger"/>
+                <AutoCompleteTextField fx:id="FilterIdentifier" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="id a rechercher"  onAction="#IdentifierChanger"/>
 
                 <!--     Name     -->
                 <Label styleClass="textPage1" text="Nom : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <TextField fx:id="FilterName" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Nom a rechercher" onAction="#NameChanger"/>
+                <AutoCompleteTextField fx:id="FilterName" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Nom a rechercher" onAction="#NameChanger"/>
 
                 <!--     Régions     -->
                 <Label styleClass="textPage1" text="Localisation : " GridPane.columnIndex="0" GridPane.rowIndex="2"/>

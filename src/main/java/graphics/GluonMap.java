@@ -62,8 +62,6 @@ public class GluonMap {
         double latitude  = Double.parseDouble(line.get(Builder.Header.Latitude_WGS84.getValue()));
         double longitude = Double.parseDouble(line.get(Builder.Header.Longitude_WGS84.getValue()));
 
-
-
         MapPoint mapPoint = new MapPoint(latitude, longitude);
         MapLayer mapLayer = new CustomCircleMarkerLayer(mapPoint);
         mapView.addLayer(mapLayer);

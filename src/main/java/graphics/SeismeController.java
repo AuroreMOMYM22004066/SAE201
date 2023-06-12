@@ -1,20 +1,15 @@
 package graphics;
 
 import com.gluonhq.maps.MapPoint;
-
 import datahandling.Builder;
 import datahandling.Filters;
-
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -22,21 +17,18 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import javafx.beans.property.DoubleProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
 import java.util.*;
 
-import static graphics.GluonMap.*;
 import static datahandling.Builder.*;
-
+import static graphics.GluonMap.*;
 
 public class SeismeController {
 
@@ -64,8 +56,8 @@ public class SeismeController {
 
 
     /*     Set filters changes     */
-    @FXML private TextField FilterIdentifier;
-    @FXML private TextField FilterName;
+    @FXML private AutoCompleteTextField  FilterIdentifier;
+    @FXML private AutoCompleteTextField  FilterName;
     @FXML private ComboBox<String> comboBoxChoc;
     @FXML private ComboBox<String> comboBoxReg;
     @FXML private Spinner<Integer> latitude;
@@ -107,6 +99,9 @@ public class SeismeController {
 
         build();
         setFormattersListeners();
+
+        FilterIdentifier.getEntries().addAll(Filters.getAll(AllData, Header.Identifiant));
+        FilterName.getEntries().addAll(Filters.getAll(AllData, Header.Nom));
 
         mapContainer.getChildren().add(mapRoot);
         createBindings();
@@ -259,6 +254,7 @@ public class SeismeController {
 
             HourChanger();
         });   // limit value : [0, 23]
+
         Min.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 int value = Integer.parseInt(newValue);
@@ -679,6 +675,7 @@ public class SeismeController {
         int pas = 1;
         // TODO : mini combobox tout les x ans;
 
+        // TreeMap <=> dico directement trié en fonction des clée
         Map<String, Integer> DateList = new TreeMap<>();
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
 

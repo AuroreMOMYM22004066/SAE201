@@ -44,12 +44,11 @@ public class Filters {
 
         /*
         List<Map<String, String>> newCSV = new ArrayList<>();
-        foreach (dico in CSV){
+        for(Map<String, String> dico : CSV){
             if(dico.get("Nom").contains(name)){
                 newCSV.add(dico)
             }
         }
-
         return newCSV;
         */
     }
@@ -202,6 +201,24 @@ public class Filters {
 
 
     /**
+     * Takes a list of dictionaries (CSV) and return a new list of Strings that contains only the rows of the given key.
+     *
+     * @param CSV      the data that we will get the new data
+     * @param header   the header that we will get the value
+     * @return a new list of Strings that contains only the rows of the given key.
+     */
+    public static List<String> getAll(List<Map<String, String>> CSV, Builder.Header header){
+        List<String> NewList = new ArrayList<>();
+        for(Map<String, String> dico : CSV){
+            NewList.add(dico.get(header.getValue()));
+        }
+        return NewList;
+    }
+
+
+
+
+    /**
      * Takes two arrays of years and a string of year and returns if the String is between the two arrays.
      *
      * @param Min   the array that represent the lower limit
@@ -220,7 +237,6 @@ public class Filters {
         return false;
     }
 
-
     /**
      * Takes a String date and return an int[] array that represent it.
      *
@@ -235,7 +251,6 @@ public class Filters {
         }
         return p2;
     }
-
 
     /**
      * Takes an array of time and a string of time and returns if the array and the string have equal contents.

@@ -113,18 +113,18 @@ public class CSVController {
      * @return a new line without the extra commas
      */
     private static String RemoveCommaInQuotes(String line){
-        // Remove in column coma (Enleve les virgules dans les colonens)
+        // Remove in column coma (Enleve les virgules dans les colonnes)
         boolean add = true;
         String newline = "";
         for (int i = 0; i < line.length(); i++) { // parcourir la String
             if (line.charAt(i) == '\"'){
-                add = !add;                       // Quand on croise "
+                add = !add;                       // Quand on croise <">
             }
 
             if (add){
                 newline += line.charAt(i);       // On ajoute la lettre
             } else if (line.charAt(i) != ',') {
-                newline += line.charAt(i);       // Si on a <add> a false, on est enter deux ", on ne rajoute pas les virgules
+                newline += line.charAt(i);       // Si on a <add> a false, on est enter deux <">, on ne rajoute pas les virgules
             }
         }
         return newline;
