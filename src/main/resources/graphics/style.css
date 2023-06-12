@@ -57,5 +57,10 @@
 }
 
 
-
+.MenuGraph {
+    -fx-background-radius: 10px;
+    -fx-background-color: #CCC5B9;
+    -fx-min-height: 70;
+    -fx-min-width: 50;
+}
 

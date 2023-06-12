@@ -19,7 +19,7 @@
                     <MenuItem text="Dashboard" onAction="#chargerPage3"/>
                 </Menu>
             </MenuBar>
-            <Label text="Recherche de séismes" styleClass="titre"/>
+            <Label text="Dashboard" styleClass="titre"/>
         </HBox>
     </top>
 
@@ -39,7 +39,7 @@
     <right>
         <VBox>
             <Button fx:id="buttonMenuChoice" alignment="CENTER_RIGHT" style="-fx-background-color: #856A5D" onAction="#showMenu"/>
-            <Pane fx:id="menuDash" visible="false" style="-fx-background-color: #CCC5B9" minWidth="50" minHeight="70">
+            <Pane fx:id="menuDash" visible="false" styleClass="MenuGraph"  >
                 <VBox styleClass="hbox">
                     <CheckBox text="Graphic 1" fx:id="checkBox1" onAction="#handleCheckBox1"/>
                     <CheckBox text="Graphic 2" fx:id="checkBox2" onAction="#handleCheckBox2"/>

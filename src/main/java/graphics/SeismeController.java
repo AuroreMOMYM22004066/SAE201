@@ -241,7 +241,10 @@ public class SeismeController {
         // Add Listener on TextField
         FilterIdentifier.textProperty().addListener((observable, oldValue, newValue) -> { IdentifierChanger(); });
 
-        FilterName.textProperty().addListener((observable, oldValue, newValue) -> { NameChanger(); });
+        FilterName.textProperty().addListener((observable, oldValue, newValue) -> {
+            FilterName.setText(FilterName.getText().toUpperCase());
+            NameChanger();
+        });
 
         H.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
@@ -560,6 +563,7 @@ public class SeismeController {
         FilterIntensity.setText("2");
 
         removeMarkers();
+        mapView.flyTo(0, new MapPoint(46.727638, 1.75), 0.1);
     }
 
 
