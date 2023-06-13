@@ -56,7 +56,6 @@ public class CSVController {
         }
     }
 
-
     /**
      * Takes the index of a line into the Content and return the elements of it separated into a List
      * @param index the number of the line

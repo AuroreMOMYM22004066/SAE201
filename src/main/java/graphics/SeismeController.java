@@ -100,6 +100,7 @@ public class SeismeController {
         build();
         setFormattersListeners();
 
+        // Auto complete
         FilterIdentifier.getEntries().addAll(Filters.getAll(AllData, Header.Identifiant));
         FilterName.getEntries().addAll(Filters.getAll(AllData, Header.Nom));
 

@@ -75,9 +75,11 @@ class FiltersTest {
     void withIdentifier() {
         List<Map<String, String>> data1 = Filters.WithIdentifier(listeDictionnaires, "123456");
         List<Map<String, String>> data2 = Filters.WithIdentifier(listeDictionnaires, "640536");
+        List<Map<String, String>> data3 = Filters.WithIdentifier(listeDictionnaires, "120009");
 
         assertEquals(data1, new ArrayList<>());
         assertEquals(data2.size(), 1);
+        assertEquals(data3.size(), 2);
     }
 
     @Test
