@@ -36,8 +36,8 @@ public class Filters {
     public static List<Map<String, String>> WithName(List<Map<String, String>> CSV, String name) {
         // With a specified name "name" (filtrer avec un nom <Name>)
         return CSV.stream()
-                .filter(dico -> dico.get(Builder.Header.Nom.getValue()).contains(name))
-                // pour chaque Map<String, String> dico de List<Map<String, String>> CSV, si la valeur associé a la clé "Nom" contient le <Name> que je recherche, il le met de coté
+                .filter(dico -> dico.get(Builder.Header.Nom.getValue()).startsWith(name.toUpperCase()))
+                // pour chaque Map<String, String> dico de List<Map<String, String>> CSV, si la valeur associé a la clé "Nom" commence par le <Name> que je recherche, il le met de coté
                 .collect(Collectors.toList());
                 // Collecte tout les Map<String, String> dico qui remplissent la condition de filtrage pour créer une nouvelle liste.
 
@@ -45,7 +45,7 @@ public class Filters {
         /*
         List<Map<String, String>> newCSV = new ArrayList<>();
         for(Map<String, String> dico : CSV){
-            if(dico.get("Nom").contains(name)){
+            if(dico.get("Nom").startsWith(name)){
                 newCSV.add(dico)
             }
         }
@@ -66,7 +66,7 @@ public class Filters {
     public static List<Map<String, String>> AtRegion(List<Map<String, String>> CSV, String region){
         // At a specified region "region"
         return CSV.stream()
-                .filter(dico -> dico.get("Région épicentrale").contains(region))
+                .filter(dico -> Objects.equals(dico.get("Région épicentrale"), region))
                 .collect(Collectors.toList());
     }
 
