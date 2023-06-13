@@ -229,11 +229,31 @@ public class Filters {
     private static boolean BtwDate(int[] Min, int[] Max, String year){
         int[] actual = SplitDate(year);
 
-        for (int i = 0; i < actual.length; i++){
-            if (Min[i] <= actual[i] && actual[i] < Max[i]){
-                return true;
+        int x = actual.length;
+
+        if (Min[0] < actual[0] && actual[0] < Max[0]) { return true; }
+        if (Min[0] == actual[0] && actual[0] == Max[0]){
+            switch (x){
+                case 1 : return true;
+                case 2 : return Min[1] <= actual[1] && actual[1] <= Max[1];
+                default : return (Min[1] <= actual[1] && actual[1] <= Max[1]) && (Min[2] <= actual[2] && actual[2] <= Max[2]);
             }
         }
+        if (Min[0] == actual[0]){
+            switch (x){
+                case 1 : return true;
+                case 2 : return Min[1] <= actual[1];
+                default : return Min[1] <= actual[1] && Min[2] <= actual[2];
+            }
+        }
+        if (actual[0] == Max[0]){
+            switch (x){
+                case 1 : return true;
+                case 2 : return actual[1] <= Max[1];
+                default : return actual[1] <= Max[1] && actual[2] <= Max[2];
+            }
+        }
+
         return false;
     }
 

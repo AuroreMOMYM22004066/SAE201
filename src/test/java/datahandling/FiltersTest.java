@@ -24,10 +24,10 @@ class FiltersTest {
         Map<String, String> dictionnaire1 = new HashMap<String, String>() {{
             put(Builder.Header.Identifiant.getValue(), "120009");
             put(Builder.Header.Date.getValue(), "1807/03/23");
-            put(Builder.Header.Heure.getValue(), "11 h 25 min");
+            put(Builder.Header.Heure.getValue(), "11 h 25 min 13 sec");
             put(Builder.Header.Nom.getValue(), "CHATAIGNERAIE");
             put(Builder.Header.RegionEpicentrale.getValue(), "QUERCY-ROUERGUE");
-            put(Builder.Header.Choc.getValue(), "");
+            put(Builder.Header.Choc.getValue(), "PRECURSEUR");
             put(Builder.Header.X_RGF93_L93.getValue(), "658972.32");
             put(Builder.Header.Y_RGF93_L93.getValue(), "6385421.78");
             put(Builder.Header.Latitude_WGS84.getValue(), "44.57");
@@ -41,7 +41,7 @@ class FiltersTest {
             put(Builder.Header.Heure.getValue(), "4 h 5 min");
             put(Builder.Header.Nom.getValue(), "VALLEE DE L'AVEYRON");
             put(Builder.Header.RegionEpicentrale.getValue(), "QUERCY-ROUERGUE");
-            put(Builder.Header.Choc.getValue(), "");
+            put(Builder.Header.Choc.getValue(), "REPLIQUE");
             put(Builder.Header.X_RGF93_L93.getValue(), "707969.03");
             put(Builder.Header.Y_RGF93_L93.getValue(), "6363075.37");
             put(Builder.Header.Latitude_WGS84.getValue(), "44.37");
@@ -115,18 +115,48 @@ class FiltersTest {
 
     @Test
     void atDate() {
+        List<Map<String, String>> data1 = Filters.AtDate(listeDictionnaires, "1807/03/23");
+        List<Map<String, String>> data2 = Filters.AtDate(listeDictionnaires, "1807/03/20");
+        List<Map<String, String>> data3 = Filters.AtDate(listeDictionnaires, "1939/05/16");
+
+        assertEquals(data1.size(), 1);
+        assertEquals(data2.size(), 0);
+        assertEquals(data3.size(), 1);
     }
 
     @Test
     void betweenDate() {
+        List<Map<String, String>> data1 = Filters.BetweenDate(listeDictionnaires, "1807/01/01", "1900/01/01");
+        List<Map<String, String>> data2 = Filters.BetweenDate(listeDictionnaires, "1807/03/20", "1807/04/23");
+        List<Map<String, String>> data3 = Filters.BetweenDate(listeDictionnaires, "1939/05/16", "1939/05/17");
+
+        assertEquals(data1.size(), 2);
+        assertEquals(data2.size(), 1);
+        assertEquals(data3.size(), 1);
     }
 
     @Test
     void atTime() {
+        List<Map<String, String>> data1 = Filters.AtTime(listeDictionnaires, new String[] {"4",  null,  null});
+        List<Map<String, String>> data2 = Filters.AtTime(listeDictionnaires, new String[] {"4",  "5",   null});
+        List<Map<String, String>> data3 = Filters.AtTime(listeDictionnaires, new String[] {"11", "25",  "13"});
+        List<Map<String, String>> data4 = Filters.AtTime(listeDictionnaires, new String[] {"0",   "0",  "0"});
+
+        assertEquals(data1.size(), 2);
+        assertEquals(data2.size(), 2);
+        assertEquals(data3.size(), 1);
+        assertEquals(data4.size(), 0);
     }
 
     @Test
     void withChoc() {
+        List<Map<String, String>> data1 = Filters.WithChoc(listeDictionnaires, "PRECURSEUR");
+        List<Map<String, String>> data2 = Filters.WithChoc(listeDictionnaires, "REPLIQUE");
+        List<Map<String, String>> data3 = Filters.WithChoc(listeDictionnaires, "SECOUSSE INDIVIDUALISEE D UN ESSAIM" );
+
+        assertEquals(data1.size(), 1);
+        assertEquals(data2.size(), 1);
+        assertEquals(data3.size(), 0);
     }
 
     @Test
